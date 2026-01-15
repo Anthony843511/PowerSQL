@@ -1,10 +1,5 @@
 [
   {
-    "Query": "2024年9月南昌发生的线路停运事件中，当前管辖电采暖用户数超过100的受影响公变数量及影响的老弱病残用户数量",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_PUB_TRANS_NUM) as effect_pub_trans_num_sum, SUM(EFFECT_EWSD_CONS_COUNT) as effect_ewsd_cons_count_sum FROM ads_line_outage_event WHERE path_name LIKE '%南昌%' AND EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59' AND ELECHEAT_CONS_COUNT > 100"
-  },
-  {
     "Query": "2024年线路异常事件中，线路反送条数少于50且线路过载次数少于60的事件的创建时间是哪些",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT CREATE_TIME, LINE_REVOVER_LOAD_NUM FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND LINE_REVERSE_POWER_NUM < 50 AND LINE_OVER_LOAD_TIMES < 60"
@@ -50,21 +45,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-3-31 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59'"
   },
   {
-    "Query": "5月在鹰潭发生的线路停运事件中，影响零用电用户数少于100，影响农灌用户数超过50，且影响煤改电用户数少于70的事件次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' AND path_name LIKE '%鹰潭%' AND EFFECT_ZERO_HOUSEHOLD_TRANSFER < 100 AND EFFECT_IRRI_CONS_COUNT > 50 AND EFFECT_COALTOELEC_CONS_COUNT < 70"
-  },
-  {
-    "Query": "4月全南县城区供电所发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND path_name LIKE '%全南县城区供电所%'"
-  },
-  {
-    "Query": "9月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59'"
-  },
-  {
     "Query": "2024年发生的所有支线停运事件所在的区县、供电中心及单位全路径有哪些",
     "Table": "ads_branch_line_outage_static",
     "SQL": "SELECT district, PATH FROM ads_branch_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
@@ -88,11 +68,6 @@
     "Query": "2024年12月28日，线路停运事件中意见工单数超过50且影响零用电用户数少于100的次数有多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-12-28 00:00:00' AND EVENT_TIME <= '2024-12-28 23:59:59' AND OPINION_ORDER_NUM > 50 AND EFFECT_ZERO_HOUSEHOLD_TRANSFER < 100"
-  },
-  {
-    "Query": "11月双桥供电所发生的线路停运事件中，主动抢修工单总数超过50，并且当前管辖的光伏台区数超过80，同时当前管辖的专变数少于50的供电所，其当前管辖的民生用户数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(LIVELIHOOD_CONS_COUNT) as livelihood_cons_count_sum FROM ads_line_outage_event WHERE path_name LIKE '%双桥供电所%' AND EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND PROACTIVE_REPAIR_ORDER_NUM > 50 AND GPC_TRANSFORMER_NUM > 80 AND PRIVATE_TRANSFORMER_NUM < 50"
   },
   {
     "Query": "2024年的线路异常事件发生了多少次",
@@ -123,11 +98,6 @@
     "Query": "2024年并开区供电中心发生的支线停运事件中，影响光伏台区数少于80且影响电采暖用户数超过70且当前管辖民生用户数少于80的事件的影响重要用户数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_IMP_CONS_NUM) as effect_imp_cons_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%并开区供电中心%' AND EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND EFFECT_GPC_TRANSFORMER_NUM < 80 AND EFFECT_ELECHEAT_CONS_COUNT > 70 AND LIVELIHOOD_CONS_COUNT < 80"
-  },
-  {
-    "Query": "7月发生的配变停运事件中，当前管辖的零用电用户数量及最小的重要用户数量是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(zero_household_transfer) as zero_household_transfer_sum, MIN(imp_cons_num) as imp_cons_num_min FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59'"
   },
   {
     "Query": "2024年发生的线路异常事件有多少次",
@@ -175,16 +145,6 @@
     "SQL": "SELECT SUM(EFFECT_ZERO_HOUSEHOLD_TRANSFER) as effect_zero_household_transfer_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%双桥供电所%' AND EVENT_TIME >= '2024-12-7 00:00:00' AND EVENT_TIME <= '2024-12-7 23:59:59' AND EFFECT_GPC_CONS_NUM < 90 AND EFFECT_GPC_TRANSFORMER_NUM < 60"
   },
   {
-    "Query": "11月线路停运事件中，影响电采暖用户超过100的次数有多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND EFFECT_ELECHEAT_CONS_COUNT > 100"
-  },
-  {
-    "Query": "8月27日并开区供电中心发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-27 00:00:00' AND EVENT_TIME <= '2024-8-27 23:59:59' AND path_name LIKE '%并开区供电中心%'"
-  },
-  {
     "Query": "南安县发生的所有配变异常事件中，配变异常的次数是多少",
     "Table": "ads_trans_abnormal_org_static",
     "SQL": "SELECT TRANS_ABNORMAL_TIMES FROM ads_trans_abnormal_org_static WHERE district_name LIKE '%南安县%'"
@@ -213,11 +173,6 @@
     "Query": "2024年1月12日安义县线路异常事件中反向重载的次数是多少",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-1-12 00:00:00' AND EVENT_TIME <= '2024-1-12 23:59:59' AND path_name LIKE '%安义县%' AND line_abn_event_type_name = '反向重载'"
-  },
-  {
-    "Query": "3月线路停运事件发生了多少次",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59'"
   },
   {
     "Query": "流湖地区所有线路停运事件所在的区县、供电中心和供电所名称",
@@ -293,11 +248,6 @@
     "Query": "10kV线路异常事件所属的供电所名称以及线路反向过载次数有哪些",
     "Table": "ads_line_abnormal_static",
     "SQL": "SELECT STATION_NAME, LINE_REVOVER_LOAD_TIMES FROM ads_line_abnormal_static WHERE line_name LIKE '%10kV%'"
-  },
-  {
-    "Query": "2月发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
   },
   {
     "Query": "请提供天潭供电分公司2024年各月份计划停电影响的保供电台区数量统计。",
@@ -420,11 +370,6 @@
     "SQL": "SELECT * FROM ads_line_outage_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "5月双桥供电所发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' AND path_name LIKE '%双桥供电所%'"
-  },
-  {
     "Query": "2024年11月6日上饶发生了多少次线路停运事件",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-6 00:00:00' AND EVENT_TIME <= '2024-11-6 23:59:59' AND path_name LIKE '%上饶%'"
@@ -500,11 +445,6 @@
     "SQL": "SELECT * FROM ads_trans_abnormal_static WHERE substation_name LIKE '%35kV变电站%'"
   },
   {
-    "Query": "10月在南昌发生的线路停运事件中，当前管辖的煤改电用户数少于90，已发布的停电信息工单数少于50，且当前管辖的光伏用户数少于70的事件次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' AND path_name LIKE '%南昌%' AND COALTOELEC_CONS_COUNT < 90 AND OUTAGE_INFO_NUM < 50 AND GPC_CONS_NUM < 70"
-  },
-  {
     "Query": "2024年6月20日发生了多少次支线停运事件",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-6-20 00:00:00' AND EVENT_TIME <= '2024-6-20 23:59:59'"
@@ -515,19 +455,9 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%安义县%'"
   },
   {
-    "Query": "8月线路停运事件中，意见工单数超过60且已发布的停电信息工单数超过80的次数有多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND OPINION_ORDER_NUM > 60 AND OUTAGE_INFO_NUM > 80"
-  },
-  {
     "Query": "2024年发生的所有配变异常事件的线路名称、配变空载次数和配变轻载次数分别是多少",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT LINE_NAME, TRANS_EMPTY_LOAD_TIMES, TRANS_LIGHT_LOAD_TIMES FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
-  },
-  {
-    "Query": "3月发生的影响用户超过50的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND cons_num > 50"
   },
   {
     "Query": "2024年配变异常事件中，配变异常次数少于100且反送电次数少于90的事件的异常次数",
@@ -543,11 +473,6 @@
     "Query": "安义县发生的支线停运事件影响了多少敏感用户",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_SEN_CONS_NUM) as effect_sen_cons_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%安义县%'"
-  },
-  {
-    "Query": "5月发生了多少次配变停运事件",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59'"
   },
   {
     "Query": "2024年昌州的支线停运事件中，涉及敏感用户的停运次数、故障停运的公变次数以及计划影响的保电台区数量是多少",
@@ -660,11 +585,6 @@
     "SQL": "SELECT TRANS_OVER_LOAD_DUR FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "9月临川区发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59' AND path_name LIKE '%临川区%'"
-  },
-  {
     "Query": "安义县线路停运事件当前的管辖用户数量及最大管辖用户数量是多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(CONS_NUM) as cons_num_sum, MAX(CONS_NUM) as cons_num_max FROM ads_line_outage_event WHERE path_name LIKE '%安义县%'"
@@ -715,11 +635,6 @@
     "SQL": "SELECT STATION FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "3月24日抚州发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-3-24 00:00:00' AND EVENT_TIME <= '2024-3-24 23:59:59' AND path_name LIKE '%抚州%'"
-  },
-  {
     "Query": "全南县城区供电所发生的支线停运事件涉及的老弱病残用户数量是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(EWSD_CONS_COUNT) as ewsd_cons_count_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%全南县城区供电所%'"
@@ -750,11 +665,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-3-8 00:00:00' AND EVENT_TIME <= '2024-3-8 23:59:59'"
   },
   {
-    "Query": "7月在鹰潭，因支线停运事件影响民生用户超过70户且影响公变数量超过50台，并且当前管辖的专变数量少于80的事件次数是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' AND path_name LIKE '%鹰潭%' AND EFFECT_LIVELIHOOD_CONS_COUNT > 70 AND EFFECT_PUB_TRANS_NUM > 50 AND PRIVATE_TRANSFORMER_NUM < 80"
-  },
-  {
     "Query": "2024年的支线停运事件发生了多少次",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
@@ -770,11 +680,6 @@
     "SQL": "SELECT LINE_OVER_LOAD_TIMES, district FROM ads_line_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "8月发生配变停运事件且停电信息数超过90、当前管辖农灌用户数也超过80的次数",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND outage_info_num > 90 AND irri_cons_count > 80"
-  },
-  {
     "Query": "2024年11月15日发生的配变停运事件中，当前管辖的农灌用户数少于80的事件，统计其当前管辖的民生用户数以及故障报修工单的总数量（不包括子单）",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT SUM(livelihood_cons_count) as livelihood_cons_count_sum, SUM(fault_order_num) as fault_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-11-15 00:00:00' AND EVENT_TIME <= '2024-11-15 23:59:59' and irri_cons_count < 80"
@@ -788,16 +693,6 @@
     "Query": "鹰潭发生的线路停运事件影响了多少敏感用户",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_SEN_CONS_NUM) as effect_sen_cons_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%鹰潭%'"
-  },
-  {
-    "Query": "3月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59'"
-  },
-  {
-    "Query": "2月临川区发生支线停运事件，其中当前管辖的重要用户数量少于90的次数有多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' AND path_name LIKE '%临川区%' AND IMP_CONS_NUM < 90"
   },
   {
     "Query": "东州发生的线路异常事件中，统计每条线路的异常次数及其所属单位，并列出总的异常事件数量",
@@ -840,11 +735,6 @@
     "SQL": "SELECT STATION, TRANS_REVOVER_VOL_DUR, TRANS_OVER_LOAD_NUM FROM ads_trans_abnormal_org_static WHERE city_name LIKE '%昌州%'"
   },
   {
-    "Query": "8月发生的所有线路异常事件所属的供电所编码有哪些",
-    "Table": "ads_line_abnormal_org_static",
-    "SQL": "SELECT STATION, LINE_EMPTY_LOAD_NUM FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2"
-  },
-  {
     "Query": "2024年线路停运事件影响了多少电采暖用户",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_ELECHEAT_CONS_COUNT) as effect_elecheat_cons_count_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
@@ -855,11 +745,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%临川区%'"
   },
   {
-    "Query": "9月支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59'"
-  },
-  {
     "Query": "110kV变电站发生的线路异常事件的数据有哪些",
     "Table": "ads_line_abnormal_static",
     "SQL": "SELECT * FROM ads_line_abnormal_static WHERE substation_name LIKE '%110kV变电站%'"
@@ -868,11 +753,6 @@
     "Query": "35kV变电站发生的配变异常事件中，统计配变反向过电压次数和配变三相不平衡次数",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT TRANS_REV_OVER_VOL_TIMES, TRANS_UNBALANCED_TIMES FROM ads_trans_abnormal_static WHERE substation_name LIKE '%35kV变电站%'"
-  },
-  {
-    "Query": "2月16日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-2-16 00:00:00' AND EVENT_TIME <= '2024-2-16 23:59:59'"
   },
   {
     "Query": "2024年5月10日发生了多少次支线停运事件",
@@ -915,11 +795,6 @@
     "SQL": "SELECT EVENT_TIME, COMPLAIN_ORDER_NUM, CASE WHEN POWER_ON_TIME IS NOT NULL THEN '已复电' ELSE '未复电' END AS IS_POWER_NAME FROM v_line_outage_full WHERE LINE_NAME LIKE '%10KV虹光树线路%' AND EVENT_TIME BETWEEN '2025-04-26' AND '2025-12-16' ORDER BY EVENT_TIME DESC"
   },
   {
-    "Query": "2月发生了多少次配变异常事件",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
-  },
-  {
     "Query": "2024年临川区线路停运事件中，影响的重要用户数量超过100的事件有哪些",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_SEN_CONS_NUM) as effect_sen_cons_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%临川区%' AND EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND IMP_CONS_NUM > 100"
@@ -945,19 +820,9 @@
     "SQL": "SELECT * FROM ads_line_abnormal_static WHERE city_name LIKE '%昌州%'"
   },
   {
-    "Query": "12月临川区发生支线停运事件，当前管辖的光伏用户数少于100的次数有多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%临川区%' AND GPC_CONS_NUM < 100"
-  },
-  {
     "Query": "抚州发生的线路异常事件次数",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%抚州%'"
-  },
-  {
-    "Query": "8月发生配变停运事件中，当前管辖敏感用户数超过100且投诉工单总数超过70的次数",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND sen_cons_num > 100 AND complain_order_num > 70"
   },
   {
     "Query": "吉安永新县线路停电事件的具体明细有哪些？",
@@ -1023,11 +888,6 @@
     "Query": "2024年11月23日发生了多少次线路异常事件",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-11-23 00:00:00' AND EVENT_TIME <= '2024-11-23 23:59:59'"
-  },
-  {
-    "Query": "8月所有支线停运事件的明细数据",
-    "Table": "ads_bra_line_outage_org_static",
-    "SQL": "SELECT * FROM ads_bra_line_outage_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2"
   },
   {
     "Query": "2024年7月28日发生的支线停运事件中，影响支线数少于100的事件的平均当前管辖重要用户数和敏感用户数是多少",
@@ -1140,16 +1000,6 @@
     "SQL": "SELECT TRANS_LOW_VOL_NUM, TRANS_EMPTY_LOAD_TIMES, ID FROM ads_trans_abnormal_org_static WHERE city_name LIKE '%昌州%'"
   },
   {
-    "Query": "7月南安县的线路异常事件中，线路轻载、空载和异常的次数分别是多少",
-    "Table": "ads_line_abnormal_static",
-    "SQL": "SELECT LINE_LIGHT_LOAD_TIMES, LINE_EMPTY_LOAD_TIMES, LINE_ABNORMAL_TIMES FROM ads_line_abnormal_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2 AND district_name LIKE '%南安县%'"
-  },
-  {
-    "Query": "7月13日临川区发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-7-13 00:00:00' AND EVENT_TIME <= '2024-7-13 23:59:59' AND path_name LIKE '%临川区%'"
-  },
-  {
     "Query": "请问能否提供三汊港供电所2024年12月期间每日对重要用户停电次数的统计信息？",
     "Table": "v_line_outage_org_static_station",
     "SQL": "select data_time, INVL_OUTAGE_IMP_CONS_TIMES FROM v_line_outage_org_static_station WHERE DATA_TIME like '2024-12%' and DATE_TYPE=3 and STATION_NAME like '%三汊港供电所%' order by data_time"
@@ -1195,19 +1045,9 @@
     "SQL": "SELECT AVG(complain_order_num) as complain_order_num_avg FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-3-11 00:00:00' AND EVENT_TIME <= '2024-3-11 23:59:59'"
   },
   {
-    "Query": "6月发生的配变异常事件中，过载异常的CT变比数和PT变比数是多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT SUM(CTBB) as ctbb_sum, SUM(PTBB) as ptbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59' and trans_abn_event_type_name = '过载'"
-  },
-  {
     "Query": "抚州发生了多少次线路异常事件",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%抚州%'"
-  },
-  {
-    "Query": "8月2日并开区供电中心发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-2 00:00:00' AND EVENT_TIME <= '2024-8-2 23:59:59' AND path_name LIKE '%并开区供电中心%'"
   },
   {
     "Query": "并开区供电中心支线停运事件发生的次数",
@@ -1223,11 +1063,6 @@
     "Query": "流湖所有线路停运事件中的故障停运专变数量是多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT FAULT_OUTAGE_PRIVATE_TRANS_NUM FROM ads_line_outage_static WHERE station_name LIKE '%流湖%'"
-  },
-  {
-    "Query": "10月临川区发生的线路停运事件影响了多少个光伏台区",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_GPC_TRANSFORMER_NUM) as effect_gpc_transformer_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' and path_name LIKE '%临川区%'"
   },
   {
     "Query": "2023年期间，万峰县志光供电所保电台区受影响数量最高的三个月分别是哪几个月？",
@@ -1315,19 +1150,9 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-6-17 00:00:00' AND EVENT_TIME <= '2024-6-17 23:59:59' AND CTBB < 90 AND trans_abn_event_type_name = '过电压'"
   },
   {
-    "Query": "12月发生的配变异常事件有多少次",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
     "Query": "2024年12月1日到2025年12月30日这段时间，鹰潭计划影响光伏台区数排前5的供电所是哪几个？",
     "Table": "v_line_outage_event_new",
     "SQL": "select STATION_NAME FROM v_line_outage_event_new WHERE EVENT_day >='2024-12-1' and EVENT_day<='2025-12-30' and ORGAN_NAME like '鹰潭%' and OUTAGE_EVENT_TYPE_NAME = '计划' order by EFFECT_GPC_TRANSFORMER_NUM DESC LIMIT 5"
-  },
-  {
-    "Query": "2月28日发生的配变异常事件有多少次",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-2-28 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
   },
   {
     "Query": "1号公变发生的所有配变停运事件的台区ID",
@@ -1355,29 +1180,14 @@
     "SQL": "SELECT SUBSTATION_NAME FROM ads_trans_abnormal_static WHERE district_name LIKE '%南安县%'"
   },
   {
-    "Query": "3月16日发生的线路异常事件有多少次",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-3-16 00:00:00' AND EVENT_TIME <= '2024-3-16 23:59:59'"
-  },
-  {
     "Query": "2024年2月6日发生的支线停运事件中，影响民生用户数超过60，影响农灌用户数少于60，且当前管辖敏感用户数超过60的情况下，统计受影响的老弱病残用户数和农灌用户数",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_EWSD_CONS_COUNT) as effect_ewsd_cons_count_sum, SUM(EFFECT_IRRI_CONS_COUNT) as effect_irri_cons_count_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-2-6 00:00:00' AND EVENT_TIME <= '2024-2-6 23:59:59' and EFFECT_LIVELIHOOD_CONS_COUNT > 60 AND EFFECT_IRRI_CONS_COUNT < 60 AND SEN_CONS_NUM > 60"
   },
   {
-    "Query": "1月发生支线停运事件，影响专变数超过70，并且当前管辖支线数少于60，同时故障报修工单总数量少于70的次数是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59' AND EFFECT_PRI_TRANS_NUM > 70 AND BRANCH_LINE_NUM < 60 AND FAULT_ORDER_NUM < 70"
-  },
-  {
     "Query": "2024年上饶发生支线停运事件中，当前管辖的老弱病残用户数少于50，影响的专变数和农灌用户数也分别少于50和60的事件次数",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%上饶%' AND EWSD_CONS_COUNT < 50 AND EFFECT_PRI_TRANS_NUM < 50 AND EFFECT_IRRI_CONS_COUNT < 60"
-  },
-  {
-    "Query": "4月发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59'"
   },
   {
     "Query": "2024年的所有线路停运事件的情况有哪些",
@@ -1388,11 +1198,6 @@
     "Query": "昌州所有配变异常事件的供电所编码及配变低电压次数",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT STATION, TRANS_LOW_VOL_TIMES FROM ads_trans_abnormal_static WHERE city_name LIKE '%昌州%'"
-  },
-  {
-    "Query": "2月抚州发生的影响民生用户数少于70的支线停运事件次数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' AND path_name LIKE '%抚州%' AND EFFECT_LIVELIHOOD_CONS_COUNT < 70"
   },
   {
     "Query": "查询2024年配变异常事件中，配变低电压次数少于80的台区名称",
@@ -1420,29 +1225,14 @@
     "SQL": "SELECT * FROM ads_line_outage_static WHERE substation_name LIKE '%110kV变电站%'"
   },
   {
-    "Query": "9月发生的配变异常事件有多少次",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59'"
-  },
-  {
     "Query": "2024年所有配变异常事件的配变反向重载次数和配变重载次数以及所属供电所名称是什么",
     "Table": "ads_trans_abnormal_org_static",
     "SQL": "SELECT TRANS_REV_HEAVY_LOAD_TIMES, TRANS_HEAVY_LOAD_TIMES, STATION_NAME FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "12月临川区发生的支线停运事件的意见工单数量",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(OPINION_ORDER_NUM) as opinion_order_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and path_name LIKE '%临川区%'"
-  },
-  {
     "Query": "2024年1月发生的配变异常事件有多少次",
     "Table": "ads_trans_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59'"
-  },
-  {
-    "Query": "10月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59'"
   },
   {
     "Query": "李渡所有支线停运事件影响的电采暖用户数量以及当前管辖的光伏台区数量",
@@ -1475,16 +1265,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%全南县城区供电所%'"
   },
   {
-    "Query": "3月25日发生了多少次配变异常事件",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-3-25 00:00:00' AND EVENT_TIME <= '2024-3-25 23:59:59'"
-  },
-  {
-    "Query": "8月份配变停运事件中，影响用户数少于80，事件持续时间少于50小时，并且投诉工单总数超过100的事件次数",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND cons_num < 80 AND event_duration < 50 AND complain_order_num > 100"
-  },
-  {
     "Query": "东州所有配变停运事件的情况是怎么样的",
     "Table": "ads_tranformer_outage_static",
     "SQL": "SELECT * FROM ads_tranformer_outage_static WHERE district_name LIKE '%东州%'"
@@ -1493,16 +1273,6 @@
     "Query": "2024年所有线路异常事件的线路重载条数和过载次数有哪些",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT LINE_HEAVY_LOAD_NUM, LINE_OVER_LOAD_TIMES FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
-  },
-  {
-    "Query": "5月发生了多少次配变停运事件",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59'"
-  },
-  {
-    "Query": "3月抚州发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND path_name LIKE '%抚州%'"
   },
   {
     "Query": "2024年7月220kV变电站的线路异常事件中，线路轻载次数是多少",
@@ -1530,11 +1300,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-11 00:00:00' AND EVENT_TIME <= '2024-11-11 23:59:59' AND GPC_TRANSFORMER_NUM > 60"
   },
   {
-    "Query": "9月发生的配变停运事件中，当前管辖电采暖用户数超过90的最大事件持续了多久（以小时计）",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT MAX(event_duration) as event_duration_max FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59' and elecheat_cons_count > 90"
-  },
-  {
     "Query": "临川区线路停运事件发生的次数是多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE path_name LIKE '%临川区%'"
@@ -1543,11 +1308,6 @@
     "Query": "请查询2024年12月下高县每日因线路停电受影响的重要用户数量统计",
     "Table": "v_line_outage_org_static_district",
     "SQL": "select data_time, FAULT_OUTAGE_IMP_CONS_NUM FROM v_line_outage_org_static_district WHERE DATA_TIME like '2024-12%' and DATE_TYPE=3 and ORGAN_NAME like '下高县%' order by data_time"
-  },
-  {
-    "Query": "12月线路停运事件中，当前管辖的煤改电用户数少于50且影响的光伏用户数少于90的次数有多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND COALTOELEC_CONS_COUNT < 50 AND EFFECT_GPC_CONS_NUM < 90"
   },
   {
     "Query": "2024年5月6日发生了多少次配变异常事件",
@@ -1578,11 +1338,6 @@
     "Query": "2024年8月4日的线路异常事件中，线路反向重载次数少于60且线路过载次数少于100的事件，更新时间和所属城市以及线路轻载条数是多少",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT UPDATE_TIME, LINE_LIGHT_LOAD_NUM, CITY FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DAY = 4 AND DATE_TYPE = 3 AND LINE_REVHEAVY_LOAD_TIMES < 60 AND LINE_OVER_LOAD_TIMES < 100"
-  },
-  {
-    "Query": "8月东州的线路异常事件的数据是什么",
-    "Table": "ads_line_abnormal_org_static",
-    "SQL": "SELECT * FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2 AND district_name LIKE '%东州%'"
   },
   {
     "Query": "全南县城区供电所支线停运事件发生的次数",
@@ -1638,11 +1393,6 @@
     "Query": "2024年线路异常次数超过60且重载次数少于100的单位全路径名称，以及这些单位的线路线损异常次数和线路反向过载次数分别是多少",
     "Table": "ads_line_abnormal_static",
     "SQL": "SELECT PATH_NAME, LINE_LOSS_ABNORMAL_TIMES, LINE_REVOVER_LOAD_TIMES FROM ads_line_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND LINE_ABNORMAL_TIMES > 60 AND LINE_HEAVY_LOAD_TIMES < 100"
-  },
-  {
-    "Query": "11月在鹰潭，因线路停运事件影响农灌用户数超过60，并且当前管辖的民生用户数超过100的计划停运事件次数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND path_name LIKE '%鹰潭%' AND EFFECT_IRRI_CONS_COUNT > 60 AND LIVELIHOOD_CONS_COUNT > 100 AND outage_event_type_name = '计划'"
   },
   {
     "Query": "2024年发生的配变停运事件中，故障停运且意见工单数超过100，并且是公变的情况下，当前管辖的农灌用户数量是多少",
@@ -1718,16 +1468,6 @@
     "Query": "2024年12月的配变异常事件中PT变比的数量是多少",
     "Table": "ads_trans_abnormal_event",
     "SQL": "SELECT SUM(PTBB) as ptbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
-    "Query": "7月所有配变异常事件的更新时间是什么",
-    "Table": "ads_trans_abnormal_org_static",
-    "SQL": "SELECT UPDATE_TIME, TRANS_OVER_VOL_NUM FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2"
-  },
-  {
-    "Query": "6月南安县的配变异常事件的情况如何",
-    "Table": "ads_trans_abnormal_org_static",
-    "SQL": "SELECT * FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 6 AND DATE_TYPE = 2 AND district_name LIKE '%南安县%'"
   },
   {
     "Query": "2024年所有线路停运事件中，计划停运影响的农灌用户数量有多少",
@@ -1820,11 +1560,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
-    "Query": "4月发生的配变停运事件的平均故障报修工单总数（不包括子单）及其持续时间（小时）是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT AVG(fault_order_num) as fault_order_num_avg, SUM(event_duration) as event_duration_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59'"
-  },
-  {
     "Query": "全南县城区供电所支线停运事件发生的次数",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%全南县城区供电所%'"
@@ -1853,11 +1588,6 @@
     "Query": "2024年9月发生的支线停运事件中，当前管辖的光伏用户数量和支线数量分别是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(GPC_CONS_NUM) as gpc_cons_num_sum, SUM(BRANCH_LINE_NUM) as branch_line_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59'"
-  },
-  {
-    "Query": "6月发生的配变停运事件中，最小投诉工单的总数以及当前管辖的民生用户数量",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT MIN(complain_order_num) as complain_order_num_min, SUM(livelihood_cons_count) as livelihood_cons_count_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59'"
   },
   {
     "Query": "抚州发生的线路停运事件影响了多少老弱病残用户以及当前管辖的光伏用户数量是多少",
@@ -1890,19 +1620,9 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%南昌%' AND FAULT_ORDER_NUM < 80"
   },
   {
-    "Query": "5月28日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-5-28 00:00:00' AND EVENT_TIME <= '2024-5-28 23:59:59'"
-  },
-  {
     "Query": "2024年抚州发生的线路停运事件中，已发布的停电信息对应的工单数量及平均每条线路的意见工单数量是多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(OUTAGE_INFO_NUM) as outage_info_num_sum, AVG(OPINION_ORDER_NUM) as opinion_order_num_avg FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and path_name LIKE '%抚州%'"
-  },
-  {
-    "Query": "3月双桥供电所发生线路异常事件中反送电的次数是多少",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND path_name LIKE '%双桥供电所%' AND line_abn_event_type_name = '反送电'"
   },
   {
     "Query": "你能查一下吉安永新县线路停电事件的详细信息吗？",
@@ -1920,11 +1640,6 @@
     "SQL": "SELECT OUTAGE_REASON, SUM(EFFECT_CONS_NUM) AS total_affected_users, AVG(EFFECT_PUB_TRANS_NUM) AS avg_affected_transformers FROM v_line_outage_full WHERE LINE_NAME LIKE '%10Kv鹿八学支线%' GROUP BY OUTAGE_REASON"
   },
   {
-    "Query": "4月在南昌发生的线路停运事件中，当前管辖的零用电用户数少于60，影响的重要用户数超过70，并且当前管辖的老弱病残用户数也少于60，求此时的电采暖用户数。",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(ELECHEAT_CONS_COUNT) as elecheat_cons_count_sum FROM ads_line_outage_event WHERE path_name LIKE '%南昌%' AND EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND ZERO_HOUSEHOLD_TRANSFER < 60 AND EFFECT_IMP_CONS_NUM > 70 AND EWSD_CONS_COUNT < 60"
-  },
-  {
     "Query": "2024年线路停运事件中，当前管辖的光伏用户数少于50的次数有多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND GPC_CONS_NUM < 50"
@@ -1938,11 +1653,6 @@
     "Query": "2024年7月19日所有线路停运事件中，计划停运影响的重要用户数量是多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT PLAN_OUTAGE_IMP_CONS_NUM FROM ads_line_outage_static WHERE YEAR = 2024 AND MONTH = 7 AND DAY = 19 AND DATE_TYPE = 3"
-  },
-  {
-    "Query": "8月发生的配变停运事件中，意见工单数少于50且事件发生时长（小时）少于90的工单数量",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(opinion_order_num) as opinion_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' and opinion_order_num < 50 AND event_duration < 90"
   },
   {
     "Query": "2024年6月29日南昌支线停运事件中，影响公变数少于100且当前管辖零用电用户数少于60的事件次数",
@@ -1980,19 +1690,9 @@
     "SQL": "SELECT FAULT_OUTAGE_EWSD_CONS_NUM FROM ads_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND substation_name LIKE '%35kV变电站%'"
   },
   {
-    "Query": "7月发生的影响用户数少于60且当前管辖的老弱病残用户数少于50的支线停运事件次数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' AND EFFECT_CONS_NUM < 60 AND EWSD_CONS_COUNT < 50"
-  },
-  {
     "Query": "2024年发生的所有支线停运事件的支线名称有哪些",
     "Table": "ads_branch_line_outage_static",
     "SQL": "SELECT BRANCH_LINE_NAME FROM ads_branch_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
-  },
-  {
-    "Query": "12月线路停运事件的故障报修工单总数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(FAULT_ORDER_NUM) as fault_order_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
     "Query": "2024年所有线路停运事件的故障停运线路数量以及所属区县、供电中心和涉及农灌用户的次数",
@@ -2015,11 +1715,6 @@
     "SQL": "SELECT FAULT_EFEC_POP_TRANS_NUM, district, ID FROM ads_branch_line_outage_static WHERE line_name LIKE '%10kV%'"
   },
   {
-    "Query": "7月抚州发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' AND path_name LIKE '%抚州%'"
-  },
-  {
     "Query": "10kV发生的所有配变异常事件的信息有哪些",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT * FROM ads_trans_abnormal_static WHERE line_name LIKE '%10kV%'"
@@ -2033,11 +1728,6 @@
     "Query": "2024年支线停运事件中，故障停运影响用户数超过90的计划停电超万户次数、涉及农灌用户次数以及未复电停运数分别是多少",
     "Table": "ads_bra_line_outage_org_static",
     "SQL": "SELECT plan_outage_over_10000_cons_num, INVL_OUTAGE_IRRI_CONS_NUM, POWEROFF_OUTAGE_NUM FROM ads_bra_line_outage_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND FAULT_OUTAGE_CONS_NUM > 90"
-  },
-  {
-    "Query": "8月发生的配变停运事件中，当前管辖的重要用户数超过60且意见工单数少于50的事件，其当前管辖的敏感用户数和农灌用户数分别是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(sen_cons_num) as sen_cons_num_sum, SUM(irri_cons_count) as irri_cons_count_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' and imp_cons_num > 60 AND opinion_order_num < 50"
   },
   {
     "Query": "2024年抚州发生的支线停运事件有多少次",
@@ -2070,11 +1760,6 @@
     "SQL": "SELECT CREATE_TIME, TRANS_REVHEAVY_LOAD_DUR, TRANS_OVER_VOL_TIMES FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "3月发生线路停运事件，其中当前管辖的光伏台区数量少于70且影响的电采暖用户数量少于60的次数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND GPC_TRANSFORMER_NUM < 70 AND EFFECT_ELECHEAT_CONS_COUNT < 60"
-  },
-  {
     "Query": "2024年发生的线路异常事件中有多少条线路处于空载状态",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT LINE_EMPTY_LOAD_NUM FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
@@ -2103,11 +1788,6 @@
     "Query": "南昌发生了多少次线路异常事件",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%南昌%'"
-  },
-  {
-    "Query": "9月抚州线路停运事件中，当前管辖煤改电用户数超过70的次数有多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59' AND path_name LIKE '%抚州%' AND COALTOELEC_CONS_COUNT > 70"
   },
   {
     "Query": "10kV发生的所有配变异常事件中的配变反向低电压次数是多少",
@@ -2143,16 +1823,6 @@
     "Query": "双桥供电所发生的线路停运事件影响了多少民生用户和电采暖用户",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_LIVELIHOOD_CONS_COUNT) as effect_livelihood_cons_count_sum, SUM(EFFECT_ELECHEAT_CONS_COUNT) as effect_elecheat_cons_count_sum FROM ads_line_outage_event WHERE path_name LIKE '%双桥供电所%'"
-  },
-  {
-    "Query": "3月发生的配变停运事件中，涉及的敏感用户数量以及主动抢修工单的总数是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(sen_cons_num) as sen_cons_num_sum, SUM(proactive_repair_order_num) as proactive_repair_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59'"
-  },
-  {
-    "Query": "10月发生的配变停运事件中主动抢修工单的总数是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(proactive_repair_order_num) as proactive_repair_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59'"
   },
   {
     "Query": "昌州所有线路停运事件中，涉及煤改电用户、故障停运影响的敏感用户和重要用户的次数分别是多少",
@@ -2205,16 +1875,6 @@
     "SQL": "select FAULT_OUTAGE_RATE FROM v_line_outage_org_static_station WHERE DATA_TIME ='2024-04-10' and DATE_TYPE=3 AND ORGAN_NAME like '%东县%' order by ORGAN_CODE,STATION_NAME asc"
   },
   {
-    "Query": "12月发生的配变异常事件中，三相不平衡的次数有多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND trans_abn_event_type_name = '三相不平衡'"
-  },
-  {
-    "Query": "4月上饶发生的线路停运事件中，影响电采暖用户数少于80，影响零用电用户数超过70，且影响农灌用户数超过100的事件的影响用户总数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_CONS_NUM) as effect_cons_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%上饶%' AND EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND EFFECT_ELECHEAT_CONS_COUNT < 80 AND EFFECT_ZERO_HOUSEHOLD_TRANSFER > 70 AND EFFECT_IRRI_CONS_COUNT > 100"
-  },
-  {
     "Query": "2024年7月6日发生的配变异常事件中的PT变比数是多少",
     "Table": "ads_trans_abnormal_event",
     "SQL": "SELECT SUM(PTBB) as ptbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-7-6 00:00:00' AND EVENT_TIME <= '2024-7-6 23:59:59'"
@@ -2260,29 +1920,14 @@
     "SQL": "select STATION_NAME FROM v_line_outage_event_new WHERE OUTAGE_EVENT_TYPE_NAME = '计划' group by STATION_NAME order by MAX(EFFECT_ELECHEAT_CONS_COUNT) DESC LIMIT 4"
   },
   {
-    "Query": "6月线路停运事件影响了多少个保电台区",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_POP_TRANSFORMER_NUM) as effect_pop_transformer_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59'"
-  },
-  {
     "Query": "2024年故障停运导致支线停运事件中，影响光伏用户数少于50且影响民生用户数少于90的事件次数",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND outage_event_type_name = '故障' AND EFFECT_GPC_CONS_NUM < 50 AND EFFECT_LIVELIHOOD_CONS_COUNT < 90"
   },
   {
-    "Query": "1月发生配变停运事件且故障报修工单总数量（不包括子单）超过90的次数有多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59' AND fault_order_num > 90"
-  },
-  {
     "Query": "临川区发生的线路停运事件涉及的当前管辖光伏台区数量是多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(GPC_TRANSFORMER_NUM) as gpc_transformer_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%临川区%'"
-  },
-  {
-    "Query": "6月支线停运事件中，影响公变数少于80的事件次数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59' AND EFFECT_PUB_TRANS_NUM < 80"
   },
   {
     "Query": "金山供电所发生的所有配变异常事件的详情",
@@ -2320,24 +1965,9 @@
     "SQL": "SELECT FAULT_OUTAGE_EWSD_CONS_NUM, PLAN_EFEC_GPC_TRANS_NUM, BRANCH_LINE_ID FROM ads_branch_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "3月26日抚州发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-3-26 00:00:00' AND EVENT_TIME <= '2024-3-26 23:59:59' AND path_name LIKE '%抚州%'"
-  },
-  {
-    "Query": "12月安义县发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%安义县%'"
-  },
-  {
     "Query": "2024年11月3日线路停运后已恢复供电且投诉工单总数少于100的次数",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-3 00:00:00' AND EVENT_TIME <= '2024-11-3 23:59:59' AND is_power_name = '是' AND COMPLAIN_ORDER_NUM < 100"
-  },
-  {
-    "Query": "5月安义县线路停运事件中，影响的农灌用户数和专变数分别是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT IS_POWER_NAME, SUM(EFFECT_IRRI_CONS_COUNT) as effect_irri_cons_count_sum, SUM(EFFECT_PRI_TRANS_NUM) as effect_pri_trans_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%安义县%' AND EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' GROUP BY IS_POWER_NAME"
   },
   {
     "Query": "1号公变发生的所有配变停运事件所在的地市，以及这些事件影响的重要用户的数量和相关的线路名称",
@@ -2358,11 +1988,6 @@
     "Query": "陵州所有配变异常事件的创建时间是什么",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT CREATE_TIME FROM ads_trans_abnormal_static WHERE city_name LIKE '%陵州%'"
-  },
-  {
-    "Query": "8月所有支线停运事件影响了多少个光伏台区",
-    "Table": "ads_bra_line_outage_org_static",
-    "SQL": "SELECT FAULT_EFEC_GPC_TRANS_NUM FROM ads_bra_line_outage_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2"
   },
   {
     "Query": "110kV变电站发生的所有支线停运事件中，计划停运影响的电采暖用户数和故障停运影响的光伏用户数是多少",
@@ -2395,11 +2020,6 @@
     "SQL": "SELECT GPC_TRANSFORMER_NUM, INVL_OUTAGE_ZERO_CONS_TIMES, INVL_OUTAGE_IRRI_CONS_NUM FROM ads_line_outage_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "4月双桥供电所发生的线路停运事件中，影响光伏台区数超过50且当前管辖零用电用户数少于90的事件的影响公变数和当前管辖支线数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_PUB_TRANS_NUM) as effect_pub_trans_num_sum, SUM(BRANCH_LINE_NUM) as branch_line_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%双桥供电所%' AND EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND EFFECT_GPC_TRANSFORMER_NUM > 50 AND ZERO_HOUSEHOLD_TRANSFER < 90"
-  },
-  {
     "Query": "2024年12月1日到2025年底，九江修水县都发生了哪些线路停电事件呢？",
     "Table": "v_line_outage_event_new",
     "SQL": "select * FROM v_line_outage_event_new WHERE EVENT_day >='2024-12-1' and EVENT_day<='2025-12-30' and ORGAN_NAME like '九江修水县%' order by EVENT_TIME desc"
@@ -2410,19 +2030,9 @@
     "SQL": "SELECT LINE_REVHEAVY_LOAD_TIMES, CREATE_TIME, CITY_NAME FROM ads_line_abnormal_static WHERE district_name LIKE '%南安县%'"
   },
   {
-    "Query": "7月13日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-7-13 00:00:00' AND EVENT_TIME <= '2024-7-13 23:59:59'"
-  },
-  {
     "Query": "临川区线路停运事件发生的次数",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE path_name LIKE '%临川区%'"
-  },
-  {
-    "Query": "7月线路异常事件中，线路重载次数少于50且线路轻载次数少于90的单位全路径名称及线路过载次数",
-    "Table": "ads_line_abnormal_static",
-    "SQL": "SELECT PATH_NAME, LINE_OVER_LOAD_TIMES FROM ads_line_abnormal_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2 AND LINE_HEAVY_LOAD_TIMES < 50 AND LINE_LIGHT_LOAD_TIMES < 90"
   },
   {
     "Query": "2024年所有线路停运事件计划影响的保电台区数量是多少",
@@ -2450,11 +2060,6 @@
     "SQL": "SELECT TRANS_EMPTY_LOAD_NUM, TRANS_REVOVER_VOL_DUR, TRANS_REVERSE_HEAVY_LOAD_NUM FROM ads_trans_abnormal_org_static WHERE district_name LIKE '%南安县%'"
   },
   {
-    "Query": "8月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59'"
-  },
-  {
     "Query": "202年8月7日到2023年9月3日每天线路停电的专变数最小值分别是多少？",
     "Table": "v_line_outage_event_new",
     "SQL": "select MIN(PRIVATE_TRANSFORMER_NUM),EVENT_DAY FROM v_line_outage_event_new WHERE EVENT_day >='2022-8-7' and EVENT_day<='2023-9-3' group by EVENT_DAY"
@@ -2463,11 +2068,6 @@
     "Query": "双桥供电所支线停运事件发生的次数",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%双桥供电所%'"
-  },
-  {
-    "Query": "8月发生的所有线路异常事件的情况有哪些",
-    "Table": "ads_line_abnormal_static",
-    "SQL": "SELECT * FROM ads_line_abnormal_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2"
   },
   {
     "Query": "金山供电所发生的所有配变异常事件所在的台区名称是什么",
@@ -2483,11 +2083,6 @@
     "Query": "在鹰潭贵溪市，哪个供电所/单位负责的线路停电影响的支线数最多？最大值是多少呢？",
     "Table": "v_line_outage_event_new",
     "SQL": "select MAX(EFFECT_BRANCH_LINE_NUM),ORGAN_NAME FROM v_line_outage_event_new WHERE ORGAN_NAME like '鹰潭贵溪市%' group by ORGAN_NAME"
-  },
-  {
-    "Query": "3月线路因故障停运的次数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND outage_event_type_name = '故障'"
   },
   {
     "Query": "2024年5月22日到2025年6月2日这段时间里，线路停电事件中受影响用户最少的组织机构是哪个",
@@ -2510,11 +2105,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE path_name LIKE '%抚州%'"
   },
   {
-    "Query": "6月配变异常事件中，配变重载次数和重载台数都少于80，并且配变低电压次数超过50的配变过载次数",
-    "Table": "ads_trans_abnormal_org_static",
-    "SQL": "SELECT TRANS_OVER_LOAD_TIMES FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 6 AND DATE_TYPE = 2 AND TRANS_HEAVY_LOAD_TIMES < 80 AND TRANS_HEAVY_LOAD_NUM < 80 AND TRANS_LOW_VOL_TIMES > 50"
-  },
-  {
     "Query": "三经线所有线路停运事件影响的农灌用户数量及线路故障停运次数是多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT FAULT_OUTAGE_IRRI_CONS_NUM, FAULT_OUTAGE_LINE_TIMES FROM ads_line_outage_static WHERE line_name LIKE '%三经线%'"
@@ -2523,11 +2113,6 @@
     "Query": "南安县所有线路异常事件的线路轻载次数以及对应的供电所编码和变电站ID是多少",
     "Table": "ads_line_abnormal_static",
     "SQL": "SELECT LINE_LIGHT_LOAD_TIMES, STATION, SUBSTATION_ID FROM ads_line_abnormal_static WHERE district_name LIKE '%南安县%'"
-  },
-  {
-    "Query": "7月安义县线路停运事件中，影响老弱病残用户数少于50的次数有多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' AND path_name LIKE '%安义县%' AND EFFECT_EWSD_CONS_COUNT < 50"
   },
   {
     "Query": "2024年大江供电分公司每月计划影响的保电台区数量各为多少？",
@@ -2560,11 +2145,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-4-17 00:00:00' AND EVENT_TIME <= '2024-4-17 23:59:59' AND livelihood_cons_count > 60 AND cons_num > 90"
   },
   {
-    "Query": "1月临川区发生的支线停运事件涉及的当前管辖光伏台区数量和影响的专变数量是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(GPC_TRANSFORMER_NUM) as gpc_transformer_num_sum, SUM(EFFECT_PRI_TRANS_NUM) as effect_pri_trans_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59' and path_name LIKE '%临川区%'"
-  },
-  {
     "Query": "全南县城区供电所线路停运事件的发生次数",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE path_name LIKE '%全南县城区供电所%'"
@@ -2575,11 +2155,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
-    "Query": "查询6月陵州的配变异常事件所属的供电所编码",
-    "Table": "ads_trans_abnormal_static",
-    "SQL": "SELECT STATION FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND MONTH = 6 AND DATE_TYPE = 2 AND city_name LIKE '%陵州%'"
-  },
-  {
     "Query": "2024年发生的影响敏感用户数少于100、影响民生用户数超过90且故障报修工单总数少于100的支线停运事件次数",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND EFFECT_SEN_CONS_NUM < 100 AND EFFECT_LIVELIHOOD_CONS_COUNT > 90 AND FAULT_ORDER_NUM < 100"
@@ -2588,16 +2163,6 @@
     "Query": "2024年11月发生配变异常事件中，PT变比超过80的次数有多少",
     "Table": "ads_trans_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND PTBB > 80"
-  },
-  {
-    "Query": "6月抚州支线停运事件中，当前管辖零用电用户数少于80的次数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59' AND path_name LIKE '%抚州%' AND ZERO_HOUSEHOLD_TRANSFER < 80"
-  },
-  {
-    "Query": "6月线路过载条数少于80的异常事件信息",
-    "Table": "ads_line_abnormal_org_static",
-    "SQL": "SELECT * FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 6 AND DATE_TYPE = 2 AND LINE_OVER_LOAD_NUM < 80"
   },
   {
     "Query": "2024年4月发生的配变停运事件中有多少条停电信息",
@@ -2625,11 +2190,6 @@
     "SQL": "SELECT SUM(EFFECT_IRRI_CONS_COUNT) as effect_irri_cons_count_sum, SUM(EFFECT_COALTOELEC_CONS_COUNT) as effect_coaltoelec_cons_count_sum FROM ads_line_outage_event WHERE path_name LIKE '%并开区供电中心%'"
   },
   {
-    "Query": "11月发生的支线停运事件中，投诉工单总数超过50，影响零用电用户数超过50，但影响重要用户数少于100的事件，统计其当前管辖的煤改电用户数和投诉工单总数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(COALTOELEC_CONS_COUNT) as coaltoelec_cons_count_sum, SUM(COMPLAIN_ORDER_NUM) as complain_order_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' and COMPLAIN_ORDER_NUM > 50 AND EFFECT_ZERO_HOUSEHOLD_TRANSFER > 50 AND EFFECT_IMP_CONS_NUM < 100"
-  },
-  {
     "Query": "2024年的所有支线停运事件的详细信息有哪些",
     "Table": "ads_branch_line_outage_static",
     "SQL": "SELECT * FROM ads_branch_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
@@ -2645,11 +2205,6 @@
     "SQL": "select * FROM v_line_outage_event_new WHERE ORGAN_NAME like '赣州安远县%' order by EVENT_TIME desc"
   },
   {
-    "Query": "8月线路异常事件中，线路反向过载次数少于100且线路重载次数少于50的信息",
-    "Table": "ads_line_abnormal_static",
-    "SQL": "SELECT * FROM ads_line_abnormal_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2 AND LINE_REVOVER_LOAD_TIMES < 100 AND LINE_HEAVY_LOAD_TIMES < 50"
-  },
-  {
     "Query": "告诉我10千伏羽旬支线有哪些停运事件时间和对应的巡视工单编号。",
     "Table": "v_line_outage_patrol_full",
     "SQL": "SELECT EVENT_TIME, ORDER_ID FROM v_line_outage_patrol_full WHERE LINE_NAME LIKE '%10千伏羽旬支线%' ORDER BY EVENT_TIME DESC, ORDER_CREATE_TIME DESC"
@@ -2660,11 +2215,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-10-10 00:00:00' AND EVENT_TIME <= '2024-10-10 23:59:59'"
   },
   {
-    "Query": "2月份并开区供电中心发生的支线停运事件涉及的保电台区数量是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(POP_TRANSFORMER_NUM) as pop_transformer_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' and path_name LIKE '%并开区供电中心%'"
-  },
-  {
     "Query": "2024年4月发生的配变异常事件有多少次",
     "Table": "ads_trans_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59'"
@@ -2673,11 +2223,6 @@
     "Query": "2024年线路停运事件影响的用户数量及平均每起事件产生的意见工单数是多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_CONS_NUM) as effect_cons_num_sum, AVG(OPINION_ORDER_NUM) as opinion_order_num_avg FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
-    "Query": "8月发生的线路异常事件所在的区县和供电中心有哪些",
-    "Table": "ads_line_abnormal_static",
-    "SQL": "SELECT district, LINE_EMPTY_LOAD_TIMES FROM ads_line_abnormal_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2"
   },
   {
     "Query": "2024年所有线路停运事件中，受影响的敏感用户数量和涉及的重要用户停运次数是多少",
@@ -2713,16 +2258,6 @@
     "Query": "2024年发生的支线停运事件中，已发布的停电信息工单数量及当前管辖的敏感用户数量是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(OUTAGE_INFO_NUM) as outage_info_num_sum, SUM(SEN_CONS_NUM) as sen_cons_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
-    "Query": "12月发生的配变异常事件中的PT变比数是多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT SUM(PTBB) as ptbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
-    "Query": "8月全南县城区供电所支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND path_name LIKE '%全南县城区供电所%'"
   },
   {
     "Query": "2024年发生的所有配变异常事件中的配变反送电次数是多少",
@@ -2840,11 +2375,6 @@
     "SQL": "SELECT SUM(SEN_CONS_NUM) as sen_cons_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%鹰潭%'"
   },
   {
-    "Query": "2月发生的配变停运事件中，当前管辖的老弱病残用户数量是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(ewsd_cons_count) as ewsd_cons_count_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
-  },
-  {
     "Query": "双桥供电所支线停运事件的发生次数",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%双桥供电所%'"
@@ -2955,11 +2485,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%临川区%'"
   },
   {
-    "Query": "6月所有配变异常事件的配变空载总时长和返送电总时长（单位：小时），以及过电压次数",
-    "Table": "ads_trans_abnormal_org_static",
-    "SQL": "SELECT TRANS_EMPTY_LOAD_DUR, TRANS_REV_POWER_DUR, TRANS_OVER_VOL_TIMES FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 6 AND DATE_TYPE = 2"
-  },
-  {
     "Query": "请提供宜江供电分公司2024年度月度线路停电计划中，受影响的特殊群体（老弱病残）用户数量统计。",
     "Table": "v_line_outage_org_static_city",
     "SQL": "select data_time, PLAN_EWSD_CONS_NUM FROM v_line_outage_org_static_city WHERE DATA_TIME like '2024%' and DATE_TYPE=2 and ORGAN_NAME like '宜江供电分公司%' order by data_time"
@@ -3015,11 +2540,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND is_power_name = '否'"
   },
   {
-    "Query": "6月全南县城区供电所发生支线停运事件，影响光伏用户超过100户且投诉工单总数少于50次的事件次数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59' AND path_name LIKE '%全南县城区供电所%' AND EFFECT_GPC_CONS_NUM > 100 AND COMPLAIN_ORDER_NUM < 50"
-  },
-  {
     "Query": "2024年5月19日发生了多少次配变异常事件",
     "Table": "ads_trans_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-5-19 00:00:00' AND EVENT_TIME <= '2024-5-19 23:59:59'"
@@ -3068,11 +2588,6 @@
     "Query": "2024年8月7日发生的所有配变异常事件所在的区县、供电中心和地市名称，以及配变反送电次数是多少",
     "Table": "ads_trans_abnormal_org_static",
     "SQL": "SELECT district_name, CITY_NAME, TRANS_REVERSE_POWER_TIMES FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DAY = 7 AND DATE_TYPE = 3"
-  },
-  {
-    "Query": "4月发生的配变停运事件中，当前管辖的电采暖用户数超过50，事件持续时间少于90小时，并且当前管辖的敏感用户数少于80的投诉工单数量是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(opinion_order_num) as opinion_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' and elecheat_cons_count > 50 AND event_duration < 90 AND sen_cons_num < 80"
   },
   {
     "Query": "2024年的所有线路异常事件发生在哪些城市",
@@ -3165,16 +2680,6 @@
     "SQL": "SELECT TG_NAME, district_name, CREATE_TIME FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND TRANS_ABNORMAL_TIMES < 90"
   },
   {
-    "Query": "10月南昌发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' AND path_name LIKE '%南昌%'"
-  },
-  {
-    "Query": "3月发生的配变异常事件中的最小PT变比是多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT MIN(PTBB) as ptbb_min FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59'"
-  },
-  {
     "Query": "2024年11月发生的配变异常事件有多少次",
     "Table": "ads_trans_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59'"
@@ -3220,19 +2725,9 @@
     "SQL": "SELECT * FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "10月支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59'"
-  },
-  {
     "Query": "2024年所有线路停运事件中故障停运的专变数量有多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT FAULT_OUTAGE_PRIVATE_TRANS_NUM FROM ads_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
-  },
-  {
-    "Query": "3月南昌各线路发生的线路停运事件的当前管辖用户数量是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT LINE_NATURE_NAME, SUM(CONS_NUM) as cons_num_sum, SUM(CONS_NUM) as cons_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%南昌%' AND EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' GROUP BY LINE_NATURE_NAME"
   },
   {
     "Query": "220kV变电站发生的所有线路停运事件影响了多少户光伏用户",
@@ -3280,11 +2775,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%并开区供电中心%'"
   },
   {
-    "Query": "7月的配变异常事件中，配变反向过载次数少于90，配变过电压台数超过100，且配变反向过载台数少于50的事件，其配变反向重载次数、配变反向重载台数及配变过载总时长是多少小时",
-    "Table": "ads_trans_abnormal_org_static",
-    "SQL": "SELECT TRANS_REV_HEAVY_LOAD_TIMES, TRANS_REVERSE_HEAVY_LOAD_NUM, TRANS_OVER_LOAD_DUR FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2 AND TRANS_REV_OVER_LOAD_TIMES < 90 AND TRANS_OVER_VOL_NUM > 100 AND TRANS_REVERSE_OVER_LOAD_NUM < 50"
-  },
-  {
     "Query": "东州发生的线路异常事件中，包含线路反向过载次数和所属城市名称以及线路反向重载次数的信息",
     "Table": "ads_line_abnormal_static",
     "SQL": "SELECT LINE_REVOVER_LOAD_TIMES, CITY_NAME, LINE_REVHEAVY_LOAD_TIMES FROM ads_line_abnormal_static WHERE district_name LIKE '%东州%'"
@@ -3303,11 +2793,6 @@
     "Query": "2024年公变的配变异常事件中，单位的全路径及名称有哪些",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT PATH, PATH_NAME FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND pub_priv_flag_name = '公变'"
-  },
-  {
-    "Query": "11月发生的支线停运事件中，投诉工单总数超过70且影响煤改电用户数超过70的投诉工单数量是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(COMPLAIN_ORDER_NUM) as complain_order_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' and COMPLAIN_ORDER_NUM > 70 AND EFFECT_COALTOELEC_CONS_COUNT > 70"
   },
   {
     "Query": "查询2024年安义县发生线路停运事件中，意见工单数少于70的次数",
@@ -3375,16 +2860,6 @@
     "SQL": "SELECT SUM(EFFECT_ELECHEAT_CONS_COUNT) as effect_elecheat_cons_count_sum, SUM(BRANCH_LINE_NUM) as branch_line_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and path_name LIKE '%鹰潭%'"
   },
   {
-    "Query": "9月发生了多少次配变停运事件",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59'"
-  },
-  {
-    "Query": "11月发生的线路停运事件中，当前管辖的老弱病残用户数少于70，且是由于故障导致的停运，并且影响了超过80个电采暖用户的事件，求其当前管辖的重要用户数和当前管辖的总用户数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(IMP_CONS_NUM) as imp_cons_num_sum, SUM(CONS_NUM) as cons_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' and EWSD_CONS_COUNT < 70 AND outage_event_type_name = '故障' AND EFFECT_ELECHEAT_CONS_COUNT > 80"
-  },
-  {
     "Query": "2024年2月20日到2025年3月14日，九江柴桑区有哪些线路停电事件？具体详情能说说吗？",
     "Table": "v_line_outage_event_new",
     "SQL": "select * FROM v_line_outage_event_new WHERE EVENT_day >='2024-2-20' and EVENT_day<='2025-3-14' and ORGAN_NAME like '九江柴桑区%' order by EVENT_TIME desc"
@@ -3413,16 +2888,6 @@
     "Query": "南安县所有线路异常事件的线路过载总时长是多少小时",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT LINE_OVER_LOAD_DUR, LINE_REVOVER_LOAD_NUM FROM ads_line_abnormal_org_static WHERE district_name LIKE '%南安县%'"
-  },
-  {
-    "Query": "12月2日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-12-2 00:00:00' AND EVENT_TIME <= '2024-12-2 23:59:59'"
-  },
-  {
-    "Query": "12月发生的影响零用电用户数少于70且当前管辖专变数超过100的线路停运事件次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND EFFECT_ZERO_HOUSEHOLD_TRANSFER < 70 AND PRIVATE_TRANSFORMER_NUM > 100"
   },
   {
     "Query": "双桥供电所发生的支线停运事件对应的当前管辖支线数量是多少",
@@ -3460,11 +2925,6 @@
     "SQL": "SELECT UPDATE_TIME, TRANS_UNBALANCED_TIMES, TRANS_HEAVY_LOAD_TIMES FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND TRANS_EMPTY_LOAD_NUM > 80 AND TRANS_OVER_LOAD_NUM > 100"
   },
   {
-    "Query": "4月发生的配变异常事件有多少次",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59'"
-  },
-  {
     "Query": "2024年配变停运事件中，当前管辖零用电用户的数量及最大投诉工单总数是多少",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT SUM(zero_household_transfer) as zero_household_transfer_sum, MAX(complain_order_num) as complain_order_num_max FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
@@ -3498,21 +2958,6 @@
     "Query": "2025年4月，志光供电所每天故障停运影响的老弱病残用户数量各是多少呢？",
     "Table": "v_line_outage_org_static_station",
     "SQL": "select data_time, FAULT_OUTAGE_EWSD_CONS_NUM FROM v_line_outage_org_static_station WHERE DATA_TIME like '2025-04%' and DATE_TYPE=3 and STATION_NAME like '%志光供电所%' order by data_time"
-  },
-  {
-    "Query": "2月8日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-2-8 00:00:00' AND EVENT_TIME <= '2024-2-8 23:59:59'"
-  },
-  {
-    "Query": "8月22日发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-22 00:00:00' AND EVENT_TIME <= '2024-8-22 23:59:59'"
-  },
-  {
-    "Query": "7月发生了多少次配变异常事件",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59'"
   },
   {
     "Query": "10kV支线上所有停运事件的发生城市和变电站ID有哪些",
@@ -3620,11 +3065,6 @@
     "SQL": "SELECT SUM(EFFECT_PRI_TRANS_NUM) as effect_pri_trans_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%全南县城区供电所%'"
   },
   {
-    "Query": "2月18日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-2-18 00:00:00' AND EVENT_TIME <= '2024-2-18 23:59:59'"
-  },
-  {
     "Query": "2024年的所有配变异常事件的情况有哪些",
     "Table": "ads_trans_abnormal_org_static",
     "SQL": "SELECT * FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
@@ -3680,11 +3120,6 @@
     "SQL": "SELECT SUM(PTBB) as ptbb_sum, SUM(PTBB) as ptbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-1-25 00:00:00' AND EVENT_TIME <= '2024-1-25 23:59:59'"
   },
   {
-    "Query": "10月双桥供电所发生的影响公变数少于90的支线停运事件次数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' AND path_name LIKE '%双桥供电所%' AND EFFECT_PUB_TRANS_NUM < 90"
-  },
-  {
     "Query": "宜江县所有配变异常事件的发生地供电所名称及配变反向过载次数",
     "Table": "ads_trans_abnormal_org_static",
     "SQL": "SELECT STATION_NAME, TRANS_REV_OVER_LOAD_TIMES FROM ads_trans_abnormal_org_static WHERE city_name LIKE '%宜江%'"
@@ -3698,11 +3133,6 @@
     "Query": "2024年6月14日发生了多少次配变停运事件",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-6-14 00:00:00' AND EVENT_TIME <= '2024-6-14 23:59:59'"
-  },
-  {
-    "Query": "5月鹰潭发生的线路停运事件影响了多少个公变",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_PUB_TRANS_NUM) as effect_pub_trans_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' and path_name LIKE '%鹰潭%'"
   },
   {
     "Query": "昌州所有支线停运事件中，计划停运影响的敏感用户数和故障停运影响的老弱病残用户数是多少",
@@ -3743,11 +3173,6 @@
     "Query": "查询2024年2月发生配变停运事件中，停电信息数超过80，当前管辖敏感用户数超过60，且当前管辖零用电用户数少于100的次数",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' AND outage_info_num > 80 AND sen_cons_num > 60 AND zero_household_transfer < 100"
-  },
-  {
-    "Query": "6月6日发生的配变异常事件有多少次",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-6-6 00:00:00' AND EVENT_TIME <= '2024-6-6 23:59:59'"
   },
   {
     "Query": "查询2024年8月220kV变电站的线路异常事件中，线路反向过载次数少于50且线路异常次数少于80的事件的线路反向重载次数及其所在城市",
@@ -3825,11 +3250,6 @@
     "SQL": "SELECT SUM(EFFECT_EWSD_CONS_COUNT) as effect_ewsd_cons_count_sum, SUM(EFFECT_PUB_TRANS_NUM) as effect_pub_trans_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%双桥供电所%'"
   },
   {
-    "Query": "10月双桥供电所发生的影响敏感用户数少于90、投诉工单总数超过50且影响光伏台区数超过100的线路停运事件次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' AND path_name LIKE '%双桥供电所%' AND EFFECT_SEN_CONS_NUM < 90 AND COMPLAIN_ORDER_NUM > 50 AND EFFECT_GPC_TRANSFORMER_NUM > 100"
-  },
-  {
     "Query": "2024年所有配变异常事件的更新时间是什么",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT UPDATE_TIME, TRANS_EMPTY_LOAD_TIMES FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
@@ -3880,11 +3300,6 @@
     "SQL": "SELECT EVENT_TIME, EFFECT_GPC_CONS_NUM, EFFECT_GPC_TRANSFORMER_NUM FROM v_line_outage_full WHERE LINE_NAME LIKE '%10kV枫分支路%' ORDER BY EVENT_TIME DESC LIMIT 1"
   },
   {
-    "Query": "4月双桥供电所发生的支线停运事件中，最小的影响了多少零用电用户和敏感用户",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT MIN(EFFECT_ZERO_HOUSEHOLD_TRANSFER) as effect_zero_household_transfer_min, SUM(EFFECT_SEN_CONS_NUM) as effect_sen_cons_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' and path_name LIKE '%双桥供电所%'"
-  },
-  {
     "Query": "2024年发生的配变停运事件中，当前管辖的煤改电用户数少于60且零用电用户数超过70的事件，统计其煤改电用户数和停电信息数量",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT SUM(coaltoelec_cons_count) as coaltoelec_cons_count_sum, SUM(outage_info_num) as outage_info_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and coaltoelec_cons_count < 60 AND zero_household_transfer > 70"
@@ -3900,19 +3315,9 @@
     "SQL": "SELECT STATION_NAME, LINE_REVOVER_LOAD_TIMES FROM ads_line_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "11月配变停运事件发生了多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59'"
-  },
-  {
     "Query": "2024年临川区支线停运事件中，当前管辖的民生用户数少于70的次数有多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%临川区%' AND LIVELIHOOD_CONS_COUNT < 70"
-  },
-  {
-    "Query": "11月线路停运事件发生了多少次",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59'"
   },
   {
     "Query": "2024年的线路异常事件共有多少次",
@@ -3945,11 +3350,6 @@
     "SQL": "SELECT SUM(EFFECT_ZERO_HOUSEHOLD_TRANSFER) as effect_zero_household_transfer_sum FROM ads_line_outage_event WHERE path_name LIKE '%安义县%'"
   },
   {
-    "Query": "6月临川区发生支线停运事件，其中意见工单数少于100，当前管辖的老弱病残用户数超过60，且影响的重要用户数少于60的次数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59' AND path_name LIKE '%临川区%' AND OPINION_ORDER_NUM < 100 AND EWSD_CONS_COUNT > 60 AND EFFECT_IMP_CONS_NUM < 60"
-  },
-  {
     "Query": "2024年所有线路停运事件的计划停运线路数量，以及它们所在的区县、供电中心和涉及的农灌用户次数",
     "Table": "ads_line_outage_org_static",
     "SQL": "SELECT PLAN_OUTAGE_LINE_NUM, district_name, INVL_OUTAGE_IRRI_CONS_NUM FROM ads_line_outage_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
@@ -3960,11 +3360,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
-    "Query": "8月19日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-8-19 00:00:00' AND EVENT_TIME <= '2024-8-19 23:59:59'"
-  },
-  {
     "Query": "110kV变电站发生的配变异常事件中，统计各事件的配变过载次数及创建时间",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT TRANS_OVER_LOAD_TIMES, CREATE_TIME FROM ads_trans_abnormal_static WHERE substation_name LIKE '%110kV变电站%'"
@@ -3973,11 +3368,6 @@
     "Query": "查询2024年35kV变电站的配变异常事件的异常次数、更新时间和台区编号",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT TRANS_ABNORMAL_TIMES, UPDATE_TIME, TG_NO FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND substation_name LIKE '%35kV变电站%'"
-  },
-  {
-    "Query": "7月所有线路停运事件中，计划停运影响的电采暖用户数、计划未复电停运数以及涉及煤改电用户的次数分别是多少",
-    "Table": "ads_line_outage_org_static",
-    "SQL": "SELECT PLAN_ELECHEAT_CONS_NUM, PLAN_OFF_OUTAGE_NUM, INVL_OUTAGE_COALTOELEC_CONS_NUM FROM ads_line_outage_org_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2"
   },
   {
     "Query": "南昌发生支线停运事件有多少次",
@@ -4045,11 +3435,6 @@
     "SQL": "SELECT SUM(POP_TRANSFORMER_NUM) as pop_transformer_num_sum, SUM(EFFECT_GPC_CONS_NUM) as effect_gpc_cons_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
-    "Query": "2月7日发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-2-7 00:00:00' AND EVENT_TIME <= '2024-2-7 23:59:59'"
-  },
-  {
     "Query": "李渡所有线路停运事件中，计划停运影响的民生用户数及中压时户数是多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT PLAN_OUTAGE_LIVE_CONS_NUM, MID_VOL_HOURS_NUM FROM ads_line_outage_static WHERE station_name LIKE '%李渡%'"
@@ -4068,16 +3453,6 @@
     "Query": "2024年11月的配变停运事件持续了多久（以小时计）",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT SUM(event_duration) as event_duration_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59'"
-  },
-  {
-    "Query": "2月份发生了多少次配变异常事件",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
-  },
-  {
-    "Query": "8月南昌线路停运事件中，影响重要用户数超过90且影响光伏台区数少于80的次数有多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND path_name LIKE '%南昌%' AND EFFECT_IMP_CONS_NUM > 90 AND EFFECT_GPC_TRANSFORMER_NUM < 80"
   },
   {
     "Query": "2024年南昌发生的线路停运事件影响了多少光伏用户和电采暖用户",
@@ -4108,11 +3483,6 @@
     "Query": "2024年8月上饶发生的支线停运事件中，影响用户数少于90但影响重要用户数超过100的故障报修工单总数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(FAULT_ORDER_NUM) as fault_order_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%上饶%' AND EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND CONS_NUM < 90 AND EFFECT_IMP_CONS_NUM > 100"
-  },
-  {
-    "Query": "1月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59'"
   },
   {
     "Query": "我想了解赣州每条线路在2025年的停电次数和平均停电时长是多少？",
@@ -4173,11 +3543,6 @@
     "Query": "2024年计划停运的支线事件中，当前管辖的光伏台区数少于50且影响电采暖用户数超过100的次数有多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND outage_event_type_name = '计划' AND GPC_TRANSFORMER_NUM < 50 AND EFFECT_ELECHEAT_CONS_COUNT > 100"
-  },
-  {
-    "Query": "8月双桥供电所发生的支线停运事件中，影响农灌用户数超过60且影响保电台区数少于50的工单数量",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(OPINION_ORDER_NUM) as opinion_order_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%双桥供电所%' AND EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND EFFECT_IRRI_CONS_COUNT > 60 AND EFFECT_POP_TRANSFORMER_NUM < 50"
   },
   {
     "Query": "2024年支线停运事件发生的次数有多少",
@@ -4245,11 +3610,6 @@
     "SQL": "SELECT STATION FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2"
   },
   {
-    "Query": "4月发生线路异常事件中空载异常的次数有多少",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND line_abn_event_type_name = '空载'"
-  },
-  {
     "Query": "请统计东州供电分公司2024年每月线路停电计划所涉及的老弱病残用户数量。",
     "Table": "v_line_outage_org_static_city",
     "SQL": "select data_time, PLAN_EWSD_CONS_NUM FROM v_line_outage_org_static_city WHERE DATA_TIME like '2024%' and DATE_TYPE=2 and ORGAN_NAME like '东州供电分公司%' order by data_time"
@@ -4263,11 +3623,6 @@
     "Query": "上饶发生的线路异常事件次数",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%上饶%'"
-  },
-  {
-    "Query": "11月发生的支线停运事件中，影响光伏用户数少于50，故障报修工单总数少于70，并且当前管辖的农灌用户数少于80的事件中受影响的敏感用户数是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_SEN_CONS_NUM) as effect_sen_cons_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' and EFFECT_GPC_CONS_NUM < 50 AND FAULT_ORDER_NUM < 70 AND IRRI_CONS_COUNT < 80"
   },
   {
     "Query": "35kV变电站发生的所有线路停运事件的当前管辖保护台区数量及计划停运影响的敏感用户数量",
@@ -4315,24 +3670,9 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-11-26 00:00:00' AND EVENT_TIME <= '2024-11-26 23:59:59' AND outage_event_type_name = '故障' AND livelihood_cons_count > 90"
   },
   {
-    "Query": "8月双桥供电所发生的支线停运事件中，停电信息已发布的工单数超过60，影响光伏用户数少于50，且影响零用电用户数超过70。请提供这些事件的影响光伏用户数以及最小当前管辖用户数。",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_GPC_CONS_NUM) as effect_gpc_cons_num_sum, MIN(CONS_NUM) as cons_num_min FROM ads_branch_line_outage_event WHERE path_name LIKE '%双桥供电所%' AND EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND OUTAGE_INFO_NUM > 60 AND EFFECT_GPC_CONS_NUM < 50 AND EFFECT_ZERO_HOUSEHOLD_TRANSFER > 70"
-  },
-  {
     "Query": "2024年发生了多少次线路异常事件",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
-    "Query": "1月支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59'"
-  },
-  {
-    "Query": "8月18日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-8-18 00:00:00' AND EVENT_TIME <= '2024-8-18 23:59:59'"
   },
   {
     "Query": "请给出10千伏十辰雪分支路停电事件中，按停电原因统计的受影响用户总数与平均停运配变数量",
@@ -4378,16 +3718,6 @@
     "Query": "2024年线路异常事件中，线路轻载次数少于50且线路异常次数少于100的事件的创建时间、所属区县、供电中心名称以及所属供电所名称有哪些",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT CREATE_TIME, district_name, STATION_NAME FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND LINE_LIGHT_LOAD_TIMES < 50 AND LINE_ABNORMAL_TIMES < 100"
-  },
-  {
-    "Query": "7月110kV变电站的线路停运事件情况如何",
-    "Table": "ads_line_outage_static",
-    "SQL": "SELECT * FROM ads_line_outage_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2 AND substation_name LIKE '%110kV变电站%'"
-  },
-  {
-    "Query": "7月双桥供电所发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' AND path_name LIKE '%双桥供电所%'"
   },
   {
     "Query": "鹰潭发生的线路停运事件影响了多少民生用户",
@@ -4475,11 +3805,6 @@
     "SQL": "SELECT EVENT_TIME, OUTAGE_REASON, ORDER_NO, STATUS_NAME FROM v_outage_order WHERE EVENT_TIME BETWEEN '2025-12-17' AND '2025-12-18'"
   },
   {
-    "Query": "6月临川区线路停运事件的平均当前管辖农灌用户数及受影响的农灌用户数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT AVG(IRRI_CONS_COUNT) as irri_cons_count_avg, SUM(EFFECT_IRRI_CONS_COUNT) as effect_irri_cons_count_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59' and path_name LIKE '%临川区%'"
-  },
-  {
     "Query": "全南县城区供电所支线停运事件发生的次数",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%全南县城区供电所%'"
@@ -4503,11 +3828,6 @@
     "Query": "2024年2月11日上饶发生支线停运事件，其中当前管辖支线数少于60，影响的老弱病残用户数和受影响的支线数都少于60的事件次数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-2-11 00:00:00' AND EVENT_TIME <= '2024-2-11 23:59:59' AND path_name LIKE '%上饶%' AND BRANCH_LINE_NUM < 60 AND EFFECT_EWSD_CONS_COUNT < 60 AND EFFECT_BRANCH_LINE_NUM < 80"
-  },
-  {
-    "Query": "10月发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59'"
   },
   {
     "Query": "2024年安义县线路停运事件中，根据是否已恢复供电统计当前管辖保电台区数量",
@@ -4550,11 +3870,6 @@
     "SQL": "SELECT SUM(PUBLIC_TRANSFORMER_NUM) as public_transformer_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-18 00:00:00' AND EVENT_TIME <= '2024-8-18 23:59:59'"
   },
   {
-    "Query": "2月22日发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-2-22 00:00:00' AND EVENT_TIME <= '2024-2-22 23:59:59'"
-  },
-  {
     "Query": "2024年所有线路停运事件中，受影响的民生用户和重要用户的数量是多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT FAULT_OUTAGE_LIVE_CONS_NUM, FAULT_OUTAGE_IMP_CONS_NUM FROM ads_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
@@ -4590,11 +3905,6 @@
     "SQL": "SELECT * FROM ads_trans_abnormal_static WHERE station_name LIKE '%金山供电所%'"
   },
   {
-    "Query": "7月发生的配变异常事件中，CT变比少于70的事件数量",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT SUM(CTBB) as ctbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' and CTBB < 70"
-  },
-  {
     "Query": "哪四个单位的光伏台区受影响数量排在前四？全路径怎么查？",
     "Table": "v_line_outage_event_new",
     "SQL": "select PATH_NAME FROM v_line_outage_event_new WHERE OUTAGE_EVENT_TYPE_NAME = '计划' group by PATH_NAME order by MAX(EFFECT_GPC_TRANSFORMER_NUM) DESC LIMIT 4"
@@ -4608,16 +3918,6 @@
     "Query": "110kV变电站发生的所有配变异常事件的单位全路径",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT PATH FROM ads_trans_abnormal_static WHERE substation_name LIKE '%110kV变电站%'"
-  },
-  {
-    "Query": "10月双桥供电所发生的支线停运事件涉及的当前管辖光伏用户数量和专变数量是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(GPC_CONS_NUM) as gpc_cons_num_sum, SUM(PRIVATE_TRANSFORMER_NUM) as private_transformer_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' and path_name LIKE '%双桥供电所%'"
-  },
-  {
-    "Query": "5月发生的支线停运事件中，当前管辖电采暖用户数超过60，且影响用户数少于80，影响老弱病残用户数少于100的影响专变数量",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_PRI_TRANS_NUM) as effect_pri_trans_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' and ELECHEAT_CONS_COUNT > 60 AND CONS_NUM < 80 AND EFFECT_EWSD_CONS_COUNT < 100"
   },
   {
     "Query": "李渡所有支线停运事件的影响保电台区数量、支线ID以及计划停运的公变数量是多少",
@@ -4635,11 +3935,6 @@
     "SQL": "SELECT PLAN_EWSD_CONS_NUM, PLAN_IRRI_CONS_NUM, FAULT_OUTAGE_COALTOELEC_CONS_NUM FROM ads_branch_line_outage_static WHERE substation_name LIKE '%220kV变电站%'"
   },
   {
-    "Query": "10月线路停运事件中，影响零用电用户数超过100的事件的平均当前管辖专变数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT AVG(PRIVATE_TRANSFORMER_NUM) as private_transformer_num_avg FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' and EFFECT_ZERO_HOUSEHOLD_TRANSFER > 100"
-  },
-  {
     "Query": "金山供电所发生的所有配变异常事件的创建时间和配变反向过电压次数以及线路ID",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT CREATE_TIME, TRANS_REV_OVER_VOL_TIMES, LINE_ID FROM ads_trans_abnormal_static WHERE station_name LIKE '%金山供电所%'"
@@ -4650,16 +3945,6 @@
     "SQL": "select MONTH FROM v_line_outage_org_static_station WHERE DATA_TIME like '2023%' and DATE_TYPE=2 AND ORGAN_NAME like '%上源县%' and STATION_NAME like '%志光供电所%' order by PLAN_EFEC_POP_TRANS_NUM DESC LIMIT 3"
   },
   {
-    "Query": "2月双桥供电所发生的影响公变数少于60，影响用户数超过80且影响煤改电用户数少于90的线路停运事件次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' AND path_name LIKE '%双桥供电所%' AND EFFECT_PUB_TRANS_NUM < 60 AND CONS_NUM > 80 AND EFFECT_COALTOELEC_CONS_COUNT < 90"
-  },
-  {
-    "Query": "3月发生支线停运事件，当前管辖的公变数量超过60的次数有多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND PUBLIC_TRANSFORMER_NUM > 60"
-  },
-  {
     "Query": "2024年已恢复供电的支线停运事件中，当前管辖的光伏台区数少于60且影响的敏感用户数少于70的事件的影响用户数和影响保电台区数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_CONS_NUM) as effect_cons_num_sum, SUM(EFFECT_POP_TRANSFORMER_NUM) as effect_pop_transformer_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and is_power_name = '是' AND GPC_TRANSFORMER_NUM < 60 AND EFFECT_SEN_CONS_NUM < 70"
@@ -4668,11 +3953,6 @@
     "Query": "南昌发生的线路停运事件影响的老弱病残用户数量及受影响的光伏台区数量",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_EWSD_CONS_COUNT) as effect_ewsd_cons_count_sum, SUM(EFFECT_GPC_TRANSFORMER_NUM) as effect_gpc_transformer_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%南昌%'"
-  },
-  {
-    "Query": "7月流湖的线路停运事件的情况如何",
-    "Table": "ads_line_outage_static",
-    "SQL": "SELECT * FROM ads_line_outage_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2 AND station_name LIKE '%流湖%'"
   },
   {
     "Query": "请查询最近一次停电的发生时间、受影响的光伏用户数量和光伏台区数量，针对10千伏朔糙分支路。",
@@ -4708,16 +3988,6 @@
     "Query": "2024年10月发生的配变停运事件中，当前管辖的零用电用户数少于80，电采暖用户数少于100，煤改电用户数少于90的主动抢修工单总数是多少",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT SUM(proactive_repair_order_num) as proactive_repair_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' and zero_household_transfer < 80 AND elecheat_cons_count < 100 AND coaltoelec_cons_count < 90"
-  },
-  {
-    "Query": "3月发生的配变停运事件中，影响用户数超过50，当前管辖煤改电用户数少于90，并且主动抢修工单总数量超过50的故障报修工单（不包括子单）的数量",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(fault_order_num) as fault_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' and cons_num > 50 AND coaltoelec_cons_count < 90 AND proactive_repair_order_num > 50"
-  },
-  {
-    "Query": "3月发生的配变停运事件中，投诉工单总数少于60的，统计当前管辖的敏感用户数量和主动抢修工单总数",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(sen_cons_num) as sen_cons_num_sum, SUM(proactive_repair_order_num) as proactive_repair_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' and complain_order_num < 60"
   },
   {
     "Query": "2024年双桥供电所发生的支线停运事件有多少次",
@@ -4815,11 +4085,6 @@
     "SQL": "SELECT SUM(OUTAGE_INFO_NUM) as outage_info_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%上饶%' AND EVENT_TIME >= '2024-8-13 00:00:00' AND EVENT_TIME <= '2024-8-13 23:59:59' AND GPC_TRANSFORMER_NUM > 100"
   },
   {
-    "Query": "10月全南县城区供电所发生的线路停运事件影响了多少户光伏用户以及当前该区域的总用户数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_GPC_CONS_NUM) as effect_gpc_cons_num_sum, SUM(CONS_NUM) as cons_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' and path_name LIKE '%全南县城区供电所%'"
-  },
-  {
     "Query": "2024年全南县城区供电所发生的支线停运事件中，当前管辖专变数超过100的事件的当前管辖敏感用户数和最少影响到的煤改电用户数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(SEN_CONS_NUM) as sen_cons_num_sum, MIN(EFFECT_COALTOELEC_CONS_COUNT) as effect_coaltoelec_cons_count_min FROM ads_branch_line_outage_event WHERE path_name LIKE '%全南县城区供电所%' AND EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND PRIVATE_TRANSFORMER_NUM > 100"
@@ -4830,29 +4095,14 @@
     "SQL": "SELECT SUM(coaltoelec_cons_count) as coaltoelec_cons_count_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
-    "Query": "12月发生的配变停运事件中，当前管辖敏感用户数少于100的事件发生时长（以小时计）及最小停电次数",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(event_duration) as event_duration_sum, MIN(outage_info_num) as outage_info_num_min FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and sen_cons_num < 100"
-  },
-  {
     "Query": "2024年10月13日发生的支线停运事件中，当前管辖公变数超过90且影响用户数超过60的事件的影响支线数和最少影响的重要用户数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_BRANCH_LINE_NUM) as effect_branch_line_num_sum, MIN(EFFECT_IMP_CONS_NUM) as effect_imp_cons_num_min FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-10-13 00:00:00' AND EVENT_TIME <= '2024-10-13 23:59:59' and PUBLIC_TRANSFORMER_NUM > 90 AND CONS_NUM > 60"
   },
   {
-    "Query": "6月发生的配变停运事件中，故障报修工单的总数量（不包括子单）以及当前管辖的老弱病残用户数量",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(fault_order_num) as fault_order_num_sum, SUM(ewsd_cons_count) as ewsd_cons_count_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59'"
-  },
-  {
     "Query": "2024年所有配变异常事件的配变过载次数和对应的变电站ID有哪些",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT TRANS_OVER_LOAD_TIMES, SUBSTATION_ID FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
-  },
-  {
-    "Query": "10月发生配变停运事件时，主动抢修工单总数少于80的次数有多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' AND proactive_repair_order_num < 80"
   },
   {
     "Query": "2024年3月31日发生的支线停运事件有多少次",
@@ -4880,11 +4130,6 @@
     "SQL": "SELECT TRANS_REVOVER_LOAD_DUR, TRANS_REVERSE_POWER_NUM, TRANS_REV_LOW_VOL_TIMES FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND city_name LIKE '%昌州%'"
   },
   {
-    "Query": "8月南昌发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND path_name LIKE '%南昌%'"
-  },
-  {
     "Query": "2024年7月21日发生的配变异常事件中的CT变比数是多少",
     "Table": "ads_trans_abnormal_event",
     "SQL": "SELECT SUM(CTBB) as ctbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-7-21 00:00:00' AND EVENT_TIME <= '2024-7-21 23:59:59'"
@@ -4903,11 +4148,6 @@
     "Query": "临川区线路停运事件发生的次数",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE path_name LIKE '%临川区%'"
-  },
-  {
-    "Query": "12月发生的配变异常事件有多少次",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
     "Query": "鹰潭发生的线路停运事件影响了多少个公变及其平均管辖的公变数量",
@@ -4985,11 +4225,6 @@
     "SQL": "SELECT SUM(OPINION_ORDER_NUM) as opinion_order_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%鹰潭%' AND EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND EWSD_CONS_COUNT > 60"
   },
   {
-    "Query": "3月发生的支线停运事件中，影响光伏台区数少于70的当前管辖光伏台区数量",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(GPC_TRANSFORMER_NUM) as gpc_transformer_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' and EFFECT_GPC_TRANSFORMER_NUM < 70"
-  },
-  {
     "Query": "东州所有线路异常事件的线路反送条数和所属供电所名称",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT LINE_REVERSE_POWER_NUM, STATION_NAME FROM ads_line_abnormal_org_static WHERE district_name LIKE '%东州%'"
@@ -5033,21 +4268,6 @@
     "Query": "2024年6月9日发生的所有配变异常事件所在的区县和供电中心名称",
     "Table": "ads_trans_abnormal_org_static",
     "SQL": "SELECT district_name FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 6 AND DAY = 9 AND DATE_TYPE = 3"
-  },
-  {
-    "Query": "8月线路停运事件发生了多少次",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59'"
-  },
-  {
-    "Query": "2月发生的配变异常事件中的PT变比数是多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT SUM(PTBB) as ptbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
-  },
-  {
-    "Query": "1月1号公变的配变异常事件中，配变反向过载次数少于50且配变低电压次数少于100的事件数据",
-    "Table": "ads_trans_abnormal_static",
-    "SQL": "SELECT * FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND MONTH = 1 AND DATE_TYPE = 2 AND tg_name LIKE '%1号公变%' AND TRANS_REV_OVER_LOAD_TIMES < 50 AND TRANS_LOW_VOL_TIMES < 100"
   },
   {
     "Query": "南昌发生了多少次线路异常事件",
@@ -5095,11 +4315,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%全南县城区供电所%'"
   },
   {
-    "Query": "7月31日发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-7-31 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59'"
-  },
-  {
     "Query": "2024年发生的支线停运事件影响的用户数量和重要用户数量是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(EFFECT_CONS_NUM) as effect_cons_num_sum, SUM(EFFECT_IMP_CONS_NUM) as effect_imp_cons_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
@@ -5118,11 +4333,6 @@
     "Query": "2024年8月发生的配变停运事件中，影响用户数少于70的事件，统计其当前管辖的零用电用户数和电采暖用户数",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT SUM(zero_household_transfer) as zero_household_transfer_sum, SUM(elecheat_cons_count) as elecheat_cons_count_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' and cons_num < 70"
-  },
-  {
-    "Query": "5月发生的配变停运事件中，当前管辖的敏感用户数、农灌用户数和电采暖用户数都超过90的工单数量是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(opinion_order_num) as opinion_order_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' and sen_cons_num > 90 AND irri_cons_count > 90 AND elecheat_cons_count > 90"
   },
   {
     "Query": "抚州线路停运事件中，最小的当前管辖支线数是多少",
@@ -5153,11 +4363,6 @@
     "Query": "2024年4月的支线停运事件中，影响用户数少于70且意见工单数少于80的事件，当前管辖的重要用户数和受影响的光伏用户数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(IMP_CONS_NUM) as imp_cons_num_sum, SUM(EFFECT_GPC_CONS_NUM) as effect_gpc_cons_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' and EFFECT_CONS_NUM < 70 AND OPINION_ORDER_NUM < 80"
-  },
-  {
-    "Query": "4月支线停运事件发生的次数是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59'"
   },
   {
     "Query": "我想知道，2024年11月26日到2025年12月17日，赣州定南县线路停电事件中，当前管辖的专变数最小值是多少？",
@@ -5200,11 +4405,6 @@
     "SQL": "SELECT SUM(EFFECT_ELECHEAT_CONS_COUNT) as effect_elecheat_cons_count_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-6-12 00:00:00' AND EVENT_TIME <= '2024-6-12 23:59:59' and EFFECT_COALTOELEC_CONS_COUNT > 50"
   },
   {
-    "Query": "12月发生的配变停运事件涉及的民生用户和零用电用户的数量是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(livelihood_cons_count) as livelihood_cons_count_sum, SUM(zero_household_transfer) as zero_household_transfer_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
     "Query": "2024年7月24日发生配变停运事件，其中当前管辖的煤改电用户数少于90，且投诉工单和主动抢修工单总数分别少于100和50的次数",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-7-24 00:00:00' AND EVENT_TIME <= '2024-7-24 23:59:59' AND coaltoelec_cons_count < 90 AND complain_order_num < 100 AND proactive_repair_order_num < 50"
@@ -5245,11 +4445,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-11-11 00:00:00' AND EVENT_TIME <= '2024-11-11 23:59:59' AND path_name LIKE '%南昌%'"
   },
   {
-    "Query": "10月发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59'"
-  },
-  {
     "Query": "东州所有配变停运事件中，计划停运影响的光伏用户数量及支线ID有哪些",
     "Table": "ads_tranformer_outage_static",
     "SQL": "SELECT plan_outage_gpc_cons_num, branch_line_id FROM ads_tranformer_outage_static WHERE district_name LIKE '%东州%'"
@@ -5258,11 +4453,6 @@
     "Query": "全南县城区供电所发生线路异常事件的次数有多少",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%全南县城区供电所%'"
-  },
-  {
-    "Query": "9月南昌发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59' AND path_name LIKE '%南昌%'"
   },
   {
     "Query": "宜江发生的线路异常事件中，线路过载次数和异常条数是多少",
@@ -5280,11 +4470,6 @@
     "SQL": "SELECT EVENT_TIME, COMPLAIN_ORDER_NUM, CASE WHEN POWER_ON_TIME IS NOT NULL THEN '已复电' ELSE '未复电' END AS IS_POWER_NAME FROM v_line_outage_full WHERE LINE_NAME LIKE '%10KV纳子化支线%' AND EVENT_TIME BETWEEN '2025-09-16' AND '2025-11-02' ORDER BY EVENT_TIME DESC"
   },
   {
-    "Query": "5月12日发生的线路停运事件有多少次",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-5-12 00:00:00' AND EVENT_TIME <= '2024-5-12 23:59:59'"
-  },
-  {
     "Query": "2024年所有线路停运事件中，计划停运影响的重要用户数量有多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT PLAN_OUTAGE_IMP_CONS_NUM FROM ads_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
@@ -5298,11 +4483,6 @@
     "Query": "请统计10kV笔分支路的停电事件中各停电原因所对应的受影响用户总数以及平均停运配变数量。",
     "Table": "v_line_outage_full",
     "SQL": "SELECT OUTAGE_REASON, SUM(EFFECT_CONS_NUM) AS total_affected_users, AVG(EFFECT_PUB_TRANS_NUM) AS avg_affected_transformers FROM v_line_outage_full WHERE LINE_NAME LIKE '%10kv矿马分支路%' GROUP BY OUTAGE_REASON"
-  },
-  {
-    "Query": "5月发生的公变配变停运事件中，投诉工单总数少于50的，统计其当前管辖的重要用户数量和零用电用户数量",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(imp_cons_num) as imp_cons_num_sum, SUM(zero_household_transfer) as zero_household_transfer_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' and pub_priv_flag_name = '公变' AND complain_order_num < 50"
   },
   {
     "Query": "2024年的所有配变异常事件的情况是什么",
@@ -5325,11 +4505,6 @@
     "SQL": "SELECT * FROM ads_line_outage_static WHERE substation_name LIKE '%35kV变电站%'"
   },
   {
-    "Query": "2月发生的配变异常事件中的CT变比数和PT变比数是多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT SUM(CTBB) as ctbb_sum, SUM(PTBB) as ptbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
-  },
-  {
     "Query": "2024年临川区线路停运事件中，当前管辖的老弱病残用户数少于60的事件次数",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%临川区%' AND EWSD_CONS_COUNT < 60"
@@ -5348,11 +4523,6 @@
     "Query": "哪些供电所计划影响的电采暖用户数排在前四？",
     "Table": "v_line_outage_event_new",
     "SQL": "select STATION_NAME FROM v_line_outage_event_new WHERE OUTAGE_EVENT_TYPE_NAME = '计划' group by STATION_NAME order by MAX(EFFECT_ELECHEAT_CONS_COUNT) DESC LIMIT 4"
-  },
-  {
-    "Query": "6月安义县发生的线路停运事件中，当前管辖的光伏用户和老弱病残用户的数量是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(GPC_CONS_NUM) as gpc_cons_num_sum, SUM(EWSD_CONS_COUNT) as ewsd_cons_count_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59' and path_name LIKE '%安义县%'"
   },
   {
     "Query": "2024年1月9日安义县支线停运事件中，影响用户数少于60的事件次数是多少",
@@ -5383,11 +4553,6 @@
     "Query": "2024年临川区发生的支线停运事件中，当前管辖的公变数量是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(PUBLIC_TRANSFORMER_NUM) as public_transformer_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and path_name LIKE '%临川区%'"
-  },
-  {
-    "Query": "11月双桥供电所发生的影响电采暖用户数超过60且当前管辖支线数少于50的线路停运事件次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND path_name LIKE '%双桥供电所%' AND BRANCH_LINE_NUM < 50 AND EFFECT_ELECHEAT_CONS_COUNT > 60"
   },
   {
     "Query": "2024年8月所有线路停运事件的停运次数和计划停运影响的电采暖用户数量是多少",
@@ -5455,11 +4620,6 @@
     "SQL": "SELECT TRANS_EMPTY_LOAD_DUR, TRANS_UNBALANCED_TIMES FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND TRANS_REVERSE_POWER_NUM < 50"
   },
   {
-    "Query": "5月21日鹰潭发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-5-21 00:00:00' AND EVENT_TIME <= '2024-5-21 23:59:59' AND path_name LIKE '%鹰潭%'"
-  },
-  {
     "Query": "1号公变发生的所有配变停运事件所在的地市名称和台区名称",
     "Table": "ads_tranformer_outage_static",
     "SQL": "SELECT city_name, tg_name FROM ads_tranformer_outage_static WHERE tg_name LIKE '%1号公变%'"
@@ -5468,11 +4628,6 @@
     "Query": "220kV变电站发生的所有配变异常事件的数据",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT * FROM ads_trans_abnormal_static WHERE substation_name LIKE '%220kV变电站%'"
-  },
-  {
-    "Query": "4月临川区线路停运事件中，当前管辖煤改电用户数少于80且影响电采暖用户数超过80且未恢复供电的次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND path_name LIKE '%临川区%' AND COALTOELEC_CONS_COUNT < 80 AND EFFECT_ELECHEAT_CONS_COUNT > 80 AND is_power_name = '否'"
   },
   {
     "Query": "2024年支线停运事件发生了多少次",
@@ -5545,24 +4700,9 @@
     "SQL": "SELECT FAULT_OUTAGE_ELECHEAT_CONS_NUM, PLAN_OUTAGE_PRIVATE_TRANS_NUM FROM ads_line_outage_static WHERE station_name LIKE '%流湖%'"
   },
   {
-    "Query": "3月在鹰潭发生的线路停运事件影响了多少个公变以及最少影响了多少个当前管辖的电采暖用户",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_PUB_TRANS_NUM) as effect_pub_trans_num_sum, MIN(ELECHEAT_CONS_COUNT) as elecheat_cons_count_min FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' and path_name LIKE '%鹰潭%'"
-  },
-  {
-    "Query": "1月南昌发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59' AND path_name LIKE '%南昌%'"
-  },
-  {
     "Query": "并开区供电中心发生了多少次线路异常事件",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%并开区供电中心%'"
-  },
-  {
-    "Query": "11月线路异常事件中超载异常的次数是多少",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND line_abn_event_type_name = '过载'"
   },
   {
     "Query": "上饶发生的支线停运事件影响了多少用户",
@@ -5605,19 +4745,9 @@
     "SQL": "select FAULT_EFEC_GPC_TRANS_NUM FROM v_line_outage_org_static_city WHERE DATA_TIME ='2023-10' and DATE_TYPE=2 AND ORGAN_NAME like '大江供电分公司%' order by ORGAN_CODE asc"
   },
   {
-    "Query": "8月发生的支线停运事件中，当前管辖光伏台区数超过100的事件的当前管辖电采暖用户数和当前管辖支线数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(ELECHEAT_CONS_COUNT) as elecheat_cons_count_sum, SUM(BRANCH_LINE_NUM) as branch_line_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' and GPC_TRANSFORMER_NUM > 100"
-  },
-  {
     "Query": "请查询10千伏远谷支线最近一次停电事件的发生时间，以及该事件中受影响的光伏用户数量和光伏台区数量。",
     "Table": "v_line_outage_full",
     "SQL": "SELECT EVENT_TIME, EFFECT_GPC_CONS_NUM, EFFECT_GPC_TRANSFORMER_NUM FROM v_line_outage_full WHERE LINE_NAME LIKE '%10千伏远谷支线%' ORDER BY EVENT_TIME DESC LIMIT 1"
-  },
-  {
-    "Query": "3月发生线路停运事件且当前管辖公变数超过80的次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND PUBLIC_TRANSFORMER_NUM > 80"
   },
   {
     "Query": "2024年线路停运事件中，影响的公变数及其当前管辖的煤改电用户数和老弱病残用户数少于50的情况",
@@ -5685,11 +4815,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE path_name LIKE '%抚州%'"
   },
   {
-    "Query": "9月2日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-9-2 00:00:00' AND EVENT_TIME <= '2024-9-2 23:59:59'"
-  },
-  {
     "Query": "2024年1月发生的所有配变异常事件中，配变反向过电压的次数有哪些",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT TRANS_REV_OVER_VOL_TIMES FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND MONTH = 1 AND DATE_TYPE = 2"
@@ -5703,11 +4828,6 @@
     "Query": "如何统计10Kv乙细支线的巡视工单总数？",
     "Table": "v_line_patrol_full",
     "SQL": "SELECT LINE_ID, COUNT(ORDER_ID) FROM v_line_patrol_full WHERE LINE_NAME LIKE '%10Kv乙细支线%' GROUP BY LINE_ID, LINE_NAME"
-  },
-  {
-    "Query": "10月支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59'"
   },
   {
     "Query": "2024年东州的线路异常事件的异常次数和创建时间有哪些",
@@ -5745,11 +4865,6 @@
     "SQL": "SELECT CITY_NAME FROM ads_line_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND substation_name LIKE '%35kV变电站%'"
   },
   {
-    "Query": "11月双桥供电所支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND path_name LIKE '%双桥供电所%'"
-  },
-  {
     "Query": "2024年7月28日发生了多少次配变停运事件",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-7-28 00:00:00' AND EVENT_TIME <= '2024-7-28 23:59:59'"
@@ -5770,19 +4885,9 @@
     "SQL": "SELECT SUM(imp_cons_num) as imp_cons_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-9-15 00:00:00' AND EVENT_TIME <= '2024-9-15 23:59:59' and outage_info_num < 90 AND gpc_cons_num < 100"
   },
   {
-    "Query": "5月6日发生的线路异常事件有多少次",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-5-6 00:00:00' AND EVENT_TIME <= '2024-5-6 23:59:59'"
-  },
-  {
     "Query": "220kV变电站发生的所有线路停运事件中，计划停运影响的电采暖用户数和故障停运的专变数量是多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT PLAN_ELECHEAT_CONS_NUM, FAULT_OUTAGE_PRIVATE_TRANS_NUM FROM ads_line_outage_static WHERE substation_name LIKE '%220kV变电站%'"
-  },
-  {
-    "Query": "5月25日发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-5-25 00:00:00' AND EVENT_TIME <= '2024-5-25 23:59:59'"
   },
   {
     "Query": "双桥供电所支线停运事件发生的次数",
@@ -5795,29 +4900,9 @@
     "SQL": "SELECT SUM(EFFECT_PUB_TRANS_NUM) as effect_pub_trans_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%双桥供电所%'"
   },
   {
-    "Query": "8月12日发生的配变异常事件中的最大CT变比是多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT MAX(CTBB) as ctbb_max FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-8-12 00:00:00' AND EVENT_TIME <= '2024-8-12 23:59:59'"
-  },
-  {
-    "Query": "1月所有配变异常事件所在的供电所编码，以及这些事件的配变反向重载次数和配变反向过电压次数",
-    "Table": "ads_trans_abnormal_static",
-    "SQL": "SELECT STATION, TRANS_REV_HEAVY_LOAD_TIMES, TRANS_REV_OVER_VOL_TIMES FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND MONTH = 1 AND DATE_TYPE = 2"
-  },
-  {
     "Query": "上饶发生的支线停运事件中，最大影响了多少个保电台区",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT MAX(EFFECT_POP_TRANSFORMER_NUM) as effect_pop_transformer_num_max FROM ads_branch_line_outage_event WHERE path_name LIKE '%上饶%'"
-  },
-  {
-    "Query": "5月发生的配变停运事件中，当前管辖的普通用户数和电采暖用户数分别是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(cons_num) as cons_num_sum, SUM(elecheat_cons_count) as elecheat_cons_count_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59'"
-  },
-  {
-    "Query": "11月南昌发生的线路停运事件涉及的当前管辖光伏台区数量及受影响的光伏台区数量",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(GPC_TRANSFORMER_NUM) as gpc_transformer_num_sum, SUM(EFFECT_GPC_TRANSFORMER_NUM) as effect_gpc_transformer_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' and path_name LIKE '%南昌%'"
   },
   {
     "Query": "2024年东州的线路异常事件中，线路反向过载次数、线路ID以及所属地市名称有哪些",
@@ -5828,11 +4913,6 @@
     "Query": "我想知道10Kv近支线一共有多少次停运事件？",
     "Table": "v_line_outage_full",
     "SQL": "SELECT LINE_ID, COUNT(EVENT_ID) FROM v_line_outage_full WHERE LINE_NAME LIKE '%10Kv近支线%' GROUP BY LINE_ID, LINE_NAME"
-  },
-  {
-    "Query": "6月双桥供电所发生的线路停运事件中，当前管辖的民生用户数少于60且投诉工单总数少于90的台区有多少个",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_POP_TRANSFORMER_NUM) as effect_pop_transformer_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%双桥供电所%' AND EVENT_TIME >= '2024-6-01 00:00:00' AND EVENT_TIME <= '2024-6-30 23:59:59' AND LIVELIHOOD_CONS_COUNT < 60 AND COMPLAIN_ORDER_NUM < 90"
   },
   {
     "Query": "上饶发生的支线停运事件有多少次",
@@ -5853,11 +4933,6 @@
     "Query": "南昌发生了多少次线路停运事件",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE path_name LIKE '%南昌%'"
-  },
-  {
-    "Query": "8月21日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-8-21 00:00:00' AND EVENT_TIME <= '2024-8-21 23:59:59'"
   },
   {
     "Query": "2024年配变异常事件中，PT变比少于60的次数有多少",
@@ -5945,11 +5020,6 @@
     "SQL": "SELECT FAULT_OUTAGE_SEN_CONS_NUM FROM ads_branch_line_outage_static WHERE substation_name LIKE '%110kV变电站%'"
   },
   {
-    "Query": "5月在鹰潭发生的支线停运事件中，影响保电台区数超过100且当前管辖电采暖用户数少于50的事件的影响专变数和主动抢修工单总数是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_PRI_TRANS_NUM) as effect_pri_trans_num_sum, SUM(PROACTIVE_REPAIR_ORDER_NUM) as proactive_repair_order_num_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%鹰潭%' AND EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' AND EFFECT_POP_TRANSFORMER_NUM > 100 AND ELECHEAT_CONS_COUNT < 50"
-  },
-  {
     "Query": "2024年配变停运事件中，影响用户数少于70的次数有多少",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND cons_num < 70"
@@ -6020,24 +5090,9 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
-    "Query": "8月发生的线路停运事件中，当前管辖专变数超过50的事件影响了多少敏感用户，以及当前管辖公变的数量是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_SEN_CONS_NUM) as effect_sen_cons_num_sum, SUM(PUBLIC_TRANSFORMER_NUM) as public_transformer_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' and PRIVATE_TRANSFORMER_NUM > 50"
-  },
-  {
-    "Query": "8月的支线停运事件中，计划停运影响民生用户数少于90且故障停运影响光伏用户数超过70的涉及敏感用户的停运次数",
-    "Table": "ads_bra_line_outage_org_static",
-    "SQL": "SELECT INVL_OUTAGE_SEN_CONS_TIMES FROM ads_bra_line_outage_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2 AND PLAN_OUTAGE_LIVE_CONS_NUM < 90 AND FAULT_OUTAGE_GPC_CONS_NUM > 70"
-  },
-  {
     "Query": "2024年支线停运事件中受影响的农灌用户数量有多少",
     "Table": "ads_branch_line_outage_static",
     "SQL": "SELECT FAULT_OUTAGE_IRRI_CONS_NUM, PLAN_OUTAGE_GPC_CONS_NUM FROM ads_branch_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
-  },
-  {
-    "Query": "8月发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59'"
   },
   {
     "Query": "2号公变所有配变停运事件的计划停运率和计划停运次数是多少",
@@ -6055,19 +5110,9 @@
     "SQL": "SELECT CITY, TRANS_LIGHT_LOAD_DUR, TRANS_OVER_LOAD_NUM FROM ads_trans_abnormal_org_static WHERE city_name LIKE '%陵州%'"
   },
   {
-    "Query": "10月抚州发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' AND path_name LIKE '%抚州%'"
-  },
-  {
     "Query": "2024年发生的支线停运事件中，受影响的煤改电用户数量和涉及的光伏台区数量是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(COALTOELEC_CONS_COUNT) as coaltoelec_cons_count_sum, SUM(EFFECT_GPC_TRANSFORMER_NUM) as effect_gpc_transformer_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
-    "Query": "11月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59'"
   },
   {
     "Query": "宜春靖安县每条线路停电时，对应的巡视工单平均发现多少缺陷，以及这些线路各有多少台配变？",
@@ -6088,11 +5133,6 @@
     "Query": "鹰潭发生的线路异常事件次数是多少",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%鹰潭%'"
-  },
-  {
-    "Query": "2月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
   },
   {
     "Query": "安义县发生的线路停运事件的故障报修工单总数是多少",
@@ -6120,21 +5160,6 @@
     "SQL": "SELECT TG_NAME, TRANS_HEAVY_LOAD_TIMES, PATH FROM ads_trans_abnormal_static WHERE city_name LIKE '%昌州%'"
   },
   {
-    "Query": "3月抚州发生的支线停运事件有多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND path_name LIKE '%抚州%'"
-  },
-  {
-    "Query": "11月发生配变停运事件，投诉工单总数少于90且事件持续时间少于80小时的次数有多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND complain_order_num < 90 AND event_duration < 80"
-  },
-  {
-    "Query": "9月2日发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-9-2 00:00:00' AND EVENT_TIME <= '2024-9-2 23:59:59'"
-  },
-  {
     "Query": "2024年已恢复供电的支线停运事件中，当前管辖重要用户数超过70且属于计划停运的故障报修工单总数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(FAULT_ORDER_NUM) as fault_order_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and is_power_name = '是' AND IMP_CONS_NUM > 70 AND outage_event_type_name = '计划'"
@@ -6143,21 +5168,6 @@
     "Query": "220kV变电站发生的所有线路停运事件当前管辖的保电台区数量是多少",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT POP_TRANSFORMER_NUM FROM ads_line_outage_static WHERE substation_name LIKE '%220kV变电站%'"
-  },
-  {
-    "Query": "4月安义县发生的支线停运事件中，影响煤改电用户数少于80，影响敏感用户数少于50，并且当前管辖电采暖用户数少于70的事件，求最大当前管辖农灌用户数及影响煤改电用户数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT MAX(IRRI_CONS_COUNT) as irri_cons_count_max, SUM(EFFECT_COALTOELEC_CONS_COUNT) as effect_coaltoelec_cons_count_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%安义县%' AND EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND EFFECT_COALTOELEC_CONS_COUNT < 80 AND EFFECT_SEN_CONS_NUM < 50 AND ELECHEAT_CONS_COUNT < 70"
-  },
-  {
-    "Query": "4月支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59'"
-  },
-  {
-    "Query": "7月发生的线路停运事件中，影响超过50户民生用户的事件产生的意见工单数量",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(OPINION_ORDER_NUM) as opinion_order_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' and EFFECT_LIVELIHOOD_CONS_COUNT > 50"
   },
   {
     "Query": "抚州发生的支线停运事件有多少次",
@@ -6240,11 +5250,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
-    "Query": "7月东州的线路异常事件中，线路过载次数及单位全路径和所属地市名称有哪些",
-    "Table": "ads_line_abnormal_static",
-    "SQL": "SELECT LINE_OVER_LOAD_TIMES, PATH, CITY_NAME FROM ads_line_abnormal_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2 AND district_name LIKE '%东州%'"
-  },
-  {
     "Query": "东州所有配变停运事件中，受影响的老弱病残用户数量是多少",
     "Table": "ads_tranformer_outage_static",
     "SQL": "SELECT fault_outage_ewsd_cons_num, district FROM ads_tranformer_outage_static WHERE district_name LIKE '%东州%'"
@@ -6258,11 +5263,6 @@
     "Query": "能否提供三庙前供电所2024年12月期间每日对重要用户实施的停电次数统计？",
     "Table": "v_line_outage_org_static_station",
     "SQL": "select data_time, INVL_OUTAGE_IMP_CONS_TIMES FROM v_line_outage_org_static_station WHERE DATA_TIME like '2024-12%' and DATE_TYPE=3 and STATION_NAME like '%三庙前供电所%' order by data_time"
-  },
-  {
-    "Query": "5月南昌发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-5-01 00:00:00' AND EVENT_TIME <= '2024-5-31 23:59:59' AND path_name LIKE '%南昌%'"
   },
   {
     "Query": "2024年8月9日发生的线路异常事件中，线路反向重载的次数是多少",
@@ -6360,11 +5360,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE path_name LIKE '%安义县%'"
   },
   {
-    "Query": "2月线路异常事件中反向重载的次数是多少",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' AND line_abn_event_type_name = '反向重载'"
-  },
-  {
     "Query": "鹰潭发生的线路异常事件次数",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE path_name LIKE '%鹰潭%'"
@@ -6378,11 +5373,6 @@
     "Query": "2023年6月1日当天，东州供电分公司计划停运的专变总共有多少次数？",
     "Table": "v_line_outage_org_static_city",
     "SQL": "select PLAN_OUTAGE_PRIVATE_TRANS_NUM FROM v_line_outage_org_static_city WHERE DATA_TIME ='2023-06-01' and DATE_TYPE=3 AND ORGAN_NAME like '东州供电分公司%' order by ORGAN_CODE asc"
-  },
-  {
-    "Query": "9月发生的支线停运事件影响了多少煤改电用户和零用电用户",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_COALTOELEC_CONS_COUNT) as effect_coaltoelec_cons_count_sum, SUM(EFFECT_ZERO_HOUSEHOLD_TRANSFER) as effect_zero_household_transfer_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59'"
   },
   {
     "Query": "2024年配变停运事件中，当前管辖的光伏用户数少于50且煤改电用户数少于90的，其管辖的零用电用户数是多少",
@@ -6405,11 +5395,6 @@
     "SQL": "SELECT * FROM ads_trans_abnormal_static WHERE district_name LIKE '%南安县%'"
   },
   {
-    "Query": "10月发生配变异常事件中，CT变比少于60的次数有多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' AND CTBB < 60"
-  },
-  {
     "Query": "10kV线路停运事件的相关情况有哪些",
     "Table": "ads_line_outage_static",
     "SQL": "SELECT * FROM ads_line_outage_static WHERE line_name LIKE '%10kV%'"
@@ -6418,16 +5403,6 @@
     "Query": "金山供电所发生的所有配变异常事件的单位全路径",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT PATH FROM ads_trans_abnormal_static WHERE station_name LIKE '%金山供电所%'"
-  },
-  {
-    "Query": "8月发生的线路停运事件中，影响老弱病残用户数少于100的事件影响了多少重要用户",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_IMP_CONS_NUM) as effect_imp_cons_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' and EFFECT_EWSD_CONS_COUNT < 100"
-  },
-  {
-    "Query": "6月2日抚州发生的线路异常事件有多少次",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-6-2 00:00:00' AND EVENT_TIME <= '2024-6-2 23:59:59' AND path_name LIKE '%抚州%'"
   },
   {
     "Query": "2024年安义县发生的线路停运事件中，主动抢修工单总数超过70且已发布的停电信息工单数超过50的事件影响了多少民生用户",
@@ -6455,16 +5430,6 @@
     "SQL": "SELECT COUNT(EVENT_ID), AVG(EVENT_DURATION) FROM v_line_outage_full WHERE STATION_NAME LIKE '%双桥供电所%'"
   },
   {
-    "Query": "2月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59'"
-  },
-  {
-    "Query": "8月所有线路异常事件的线路空载次数和创建时间有哪些",
-    "Table": "ads_line_abnormal_org_static",
-    "SQL": "SELECT LINE_EMPTY_LOAD_TIMES, CREATE_TIME FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2"
-  },
-  {
     "Query": "2024年7月19日上饶发生的线路停运事件涉及的当前管辖光伏台区数量是多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(GPC_TRANSFORMER_NUM) as gpc_transformer_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-7-19 00:00:00' AND EVENT_TIME <= '2024-7-19 23:59:59' and path_name LIKE '%上饶%'"
@@ -6483,11 +5448,6 @@
     "Query": "2024年12月13日双桥供电所线路异常事件中过载异常的次数是多少",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-12-13 00:00:00' AND EVENT_TIME <= '2024-12-13 23:59:59' AND path_name LIKE '%双桥供电所%' AND line_abn_event_type_name = '过载'"
-  },
-  {
-    "Query": "8月发生的所有配变异常事件所在的供电所名称、配变过电压台数以及所属区县和供电中心分别是哪些",
-    "Table": "ads_trans_abnormal_org_static",
-    "SQL": "SELECT STATION_NAME, TRANS_OVER_VOL_NUM, district FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2"
   },
   {
     "Query": "上饶婺源县每条线路停电时，对应的巡视工单平均能发现多少缺陷，以及这些线路总共有多少台配变？",
@@ -6565,11 +5525,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
   },
   {
-    "Query": "7月发生的线路停运事件当前管辖的支线数量是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(BRANCH_LINE_NUM) as branch_line_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59'"
-  },
-  {
     "Query": "2024年11月发生的配变停运事件有多少次",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59'"
@@ -6583,11 +5538,6 @@
     "Query": "陵州发生的线路异常事件所在的城市有哪些",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT CITY FROM ads_line_abnormal_org_static WHERE city_name LIKE '%陵州%'"
-  },
-  {
-    "Query": "3月临川区支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-3-01 00:00:00' AND EVENT_TIME <= '2024-3-31 23:59:59' AND path_name LIKE '%临川区%'"
   },
   {
     "Query": "2024年发生的配变异常事件中涉及的CT变比数是多少",
@@ -6680,24 +5630,9 @@
     "SQL": "SELECT LINE_LOSS_ABNORMAL_NUM FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "9月线路异常事件发生的次数是多少",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59'"
-  },
-  {
-    "Query": "11月发生的线路停运事件中，影响专变数超过80且影响电采暖用户数少于100的事件的当前管辖农灌用户数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(IRRI_CONS_COUNT) as irri_cons_count_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' and EFFECT_PRI_TRANS_NUM > 80 AND EFFECT_ELECHEAT_CONS_COUNT < 100"
-  },
-  {
     "Query": "2024年上饶发生的线路停运事件有多少次",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%上饶%'"
-  },
-  {
-    "Query": "1月发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59'"
   },
   {
     "Query": "2024年发生的所有配变异常事件所在的供电所编码有哪些",
@@ -6718,11 +5653,6 @@
     "Query": "2024年3月期间，东县因设备故障导致停电，受影响的特殊群体用户（老弱病残）数量是多少？",
     "Table": "v_line_outage_org_static_station",
     "SQL": "select FAULT_OUTAGE_EWSD_CONS_NUM FROM v_line_outage_org_static_station WHERE DATA_TIME ='2024-03' and DATE_TYPE=2 AND ORGAN_NAME like '%东县%' order by ORGAN_CODE,STATION_NAME asc"
-  },
-  {
-    "Query": "7月安义县支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' AND path_name LIKE '%安义县%'"
   },
   {
     "Query": "景德镇昌江区有没有发生过线路停电事件？具体是哪些详情？",
@@ -6750,11 +5680,6 @@
     "SQL": "SELECT district FROM ads_line_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "4月支线停运事件发生的次数是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59'"
-  },
-  {
     "Query": "并开区供电中心发生的支线停运事件次数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%并开区供电中心%'"
@@ -6775,19 +5700,9 @@
     "SQL": "SELECT SUM(PRIVATE_TRANSFORMER_NUM) as private_transformer_num_sum, SUM(PROACTIVE_REPAIR_ORDER_NUM) as proactive_repair_order_num_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and GPC_TRANSFORMER_NUM < 50"
   },
   {
-    "Query": "10月发生的专变配变停运事件中，故障报修工单总数量（不包括子单）超过100的电采暖用户数量有多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(elecheat_cons_count) as elecheat_cons_count_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' and pub_priv_flag_name = '专变' AND fault_order_num > 100"
-  },
-  {
     "Query": "2024年抚州发生的线路异常事件有多少次",
     "Table": "ads_line_abnormal_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%抚州%'"
-  },
-  {
-    "Query": "4月发生的配变停运事件中，当前管辖的光伏用户数少于60的，其当前管辖的重要用户数是多少",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT SUM(imp_cons_num) as imp_cons_num_sum FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' and gpc_cons_num < 60"
   },
   {
     "Query": "请提供七琴供电所2024年12月份每日受线路停电影响的电采暖用户明细数据",
@@ -6813,11 +5728,6 @@
     "Query": "查询2024年宜江的配变异常事件中，配变重载次数和配变反向重载次数都少于80的主键ID",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT ID FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND city_name LIKE '%宜江%' AND TRANS_HEAVY_LOAD_TIMES < 80 AND TRANS_REV_HEAVY_LOAD_TIMES < 80"
-  },
-  {
-    "Query": "4月份支线停运事件中，影响民生用户数和总用户数都少于60的事件次数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND EFFECT_LIVELIHOOD_CONS_COUNT < 60 AND CONS_NUM < 60"
   },
   {
     "Query": "2024年双桥供电所线路停运事件发生了多少次",
@@ -6860,16 +5770,6 @@
     "SQL": "SELECT UPDATE_TIME FROM ads_trans_abnormal_org_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND TRANS_REVERSE_LOW_VOL_NUM < 70 AND TRANS_HEAVY_LOAD_TIMES < 50"
   },
   {
-    "Query": "12月在鹰潭发生的支线停运事件中，当前管辖零用电用户数超过100的事件，求其平均当前管辖保电台区数及最大影响敏感用户数",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT AVG(POP_TRANSFORMER_NUM) as pop_transformer_num_avg, MAX(EFFECT_SEN_CONS_NUM) as effect_sen_cons_num_max FROM ads_branch_line_outage_event WHERE path_name LIKE '%鹰潭%' AND EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND ZERO_HOUSEHOLD_TRANSFER > 100"
-  },
-  {
-    "Query": "4月抚州发生的支线停运事件中，影响敏感用户数少于50的影响公变数量以及当前管辖的老弱病残用户数量",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(EFFECT_PUB_TRANS_NUM) as effect_pub_trans_num_sum, SUM(EWSD_CONS_COUNT) as ewsd_cons_count_sum FROM ads_branch_line_outage_event WHERE path_name LIKE '%抚州%' AND EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59' AND EFFECT_SEN_CONS_NUM < 50"
-  },
-  {
     "Query": "2024年线路停运事件中，影响专变数超过80且当前管辖光伏用户数超过90的次数有多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND EFFECT_PRI_TRANS_NUM > 80 AND GPC_CONS_NUM > 90"
@@ -6905,11 +5805,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND complain_order_num < 70 AND elecheat_cons_count < 60"
   },
   {
-    "Query": "8月宜江的线路异常事件的情况如何",
-    "Table": "ads_line_abnormal_org_static",
-    "SQL": "SELECT * FROM ads_line_abnormal_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2 AND city_name LIKE '%宜江%'"
-  },
-  {
     "Query": "2024年11月发生的配变停运事件有多少次",
     "Table": "ads_tranformer_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59'"
@@ -6925,19 +5820,9 @@
     "SQL": "SELECT FAULT_OUTAGE_LIVE_CONS_NUM, FAULT_OUTAGE_EWSD_CONS_NUM FROM ads_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1 AND FAULT_OUTAGE_GPC_CONS_NUM > 100"
   },
   {
-    "Query": "9月发生的配变异常事件中的CT变比数和PT变比数是多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT SUM(CTBB) as ctbb_sum, SUM(PTBB) as ptbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-9-01 00:00:00' AND EVENT_TIME <= '2024-9-30 23:59:59'"
-  },
-  {
     "Query": "2024年2月9日全南县城区供电所发生了多少次线路停运事件",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-2-9 00:00:00' AND EVENT_TIME <= '2024-2-9 23:59:59' AND path_name LIKE '%全南县城区供电所%'"
-  },
-  {
-    "Query": "8月35kV变电站支线停运事件的中压时户数以及计划停运影响的零用电用户数量是多少",
-    "Table": "ads_branch_line_outage_static",
-    "SQL": "SELECT MID_VOL_HOURS_NUM, PLAN_OUTAGE_ZERO_CONS_NUM FROM ads_branch_line_outage_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2 AND substation_name LIKE '%35kV变电站%'"
   },
   {
     "Query": "2024年所有配变异常事件的变电站名称和台区编号有哪些",
@@ -6945,19 +5830,9 @@
     "SQL": "SELECT SUBSTATION_NAME, TG_NO FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "1月抚州发生的线路停运事件中，当前管辖支线数超过70且影响敏感用户数少于60的事件，其当前管辖煤改电用户数和主动抢修工单总数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT SUM(COALTOELEC_CONS_COUNT) as coaltoelec_cons_count_sum, SUM(PROACTIVE_REPAIR_ORDER_NUM) as proactive_repair_order_num_sum FROM ads_line_outage_event WHERE path_name LIKE '%抚州%' AND EVENT_TIME >= '2024-1-01 00:00:00' AND EVENT_TIME <= '2024-1-31 23:59:59' AND BRANCH_LINE_NUM > 70 AND EFFECT_SEN_CONS_NUM < 60"
-  },
-  {
     "Query": "昌州所有支线停运事件中，计划未复电的停运次数有多少",
     "Table": "ads_bra_line_outage_org_static",
     "SQL": "SELECT PLAN_OFF_OUTAGE_NUM, PLAN_OUTAGE_PRIVATE_TRANS_NUM FROM ads_bra_line_outage_org_static WHERE city_name LIKE '%昌州%'"
-  },
-  {
-    "Query": "2月影响煤改电用户数少于90的支线停运事件的故障报修工单总数是多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT SUM(FAULT_ORDER_NUM) as fault_order_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' and EFFECT_COALTOELEC_CONS_COUNT < 90"
   },
   {
     "Query": "陵州发生的所有线路异常事件涉及的单位全路径",
@@ -7020,11 +5895,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%上饶%' AND SEN_CONS_NUM < 90 AND LIVELIHOOD_CONS_COUNT > 60"
   },
   {
-    "Query": "2月2日发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-2-2 00:00:00' AND EVENT_TIME <= '2024-2-2 23:59:59'"
-  },
-  {
     "Query": "昌州供电分公司在2023年6月1日这天，线路计划停运专变的具体次数是多少",
     "Table": "v_line_outage_org_static_city",
     "SQL": "select PLAN_OUTAGE_PRIVATE_TRANS_NUM FROM v_line_outage_org_static_city WHERE DATA_TIME ='2023-06-01' and DATE_TYPE=3 AND ORGAN_NAME like '昌州供电分公司%' order by ORGAN_CODE asc"
@@ -7085,11 +5955,6 @@
     "SQL": "SELECT district FROM ads_line_outage_static WHERE station_name LIKE '%流湖%'"
   },
   {
-    "Query": "7月所有线路停运事件的当前管辖保电台区数量及计划停运专变次数有哪些",
-    "Table": "ads_line_outage_org_static",
-    "SQL": "SELECT POP_TRANSFORMER_NUM, PLAN_OUTAGE_PRIVATE_TRANS_NUM FROM ads_line_outage_org_static WHERE YEAR = 2024 AND MONTH = 7 AND DATE_TYPE = 2"
-  },
-  {
     "Query": "35kV变电站发生的所有配变异常事件的数据",
     "Table": "ads_trans_abnormal_static",
     "SQL": "SELECT * FROM ads_trans_abnormal_static WHERE substation_name LIKE '%35kV变电站%'"
@@ -7135,11 +6000,6 @@
     "SQL": "SELECT STATION FROM ads_line_abnormal_static WHERE district_name LIKE '%南安县%'"
   },
   {
-    "Query": "1月发生的所有配变异常事件所在的区县和供电中心名称，以及配变反向过电压次数",
-    "Table": "ads_trans_abnormal_static",
-    "SQL": "SELECT district_name, TRANS_REV_OVER_VOL_TIMES FROM ads_trans_abnormal_static WHERE YEAR = 2024 AND MONTH = 1 AND DATE_TYPE = 2"
-  },
-  {
     "Query": "南昌发生的支线停运事件有多少次",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE path_name LIKE '%南昌%'"
@@ -7173,21 +6033,6 @@
     "Query": "2024年的线路停运事件有多少次",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
-  },
-  {
-    "Query": "8月发生的配变停运事件有多少次",
-    "Table": "ads_tranformer_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59'"
-  },
-  {
-    "Query": "2月发生的线路停运事件中，影响光伏台区数少于100，意见工单数超过100，且当前管辖光伏用户数少于50的最大停电信息对应的已发布工单数是多少",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT MAX(OUTAGE_INFO_NUM) as outage_info_num_max FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' and EFFECT_GPC_TRANSFORMER_NUM < 100 AND OPINION_ORDER_NUM > 100 AND GPC_CONS_NUM < 50"
-  },
-  {
-    "Query": "12月全南县城区供电所发生支线停运事件，主动抢修工单总数超过60且影响重要用户数少于90的次数有多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-12-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%全南县城区供电所%' AND PROACTIVE_REPAIR_ORDER_NUM > 60 AND EFFECT_IMP_CONS_NUM < 90"
   },
   {
     "Query": "2024年4月13日上饶发生的支线停运事件影响了多少敏感用户以及总的故障报修工单数量是多少",
@@ -7225,19 +6070,9 @@
     "SQL": "SELECT district_name, FAULT_OUTAGE_SEN_CONS_NUM FROM ads_line_outage_static WHERE YEAR = 2024 AND DATE_TYPE = 1"
   },
   {
-    "Query": "8月支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59'"
-  },
-  {
     "Query": "昌州的线路异常事件详情有哪些",
     "Table": "ads_line_abnormal_org_static",
     "SQL": "SELECT * FROM ads_line_abnormal_org_static WHERE city_name LIKE '%昌州%'"
-  },
-  {
-    "Query": "10月全南县城区供电所发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-10-01 00:00:00' AND EVENT_TIME <= '2024-10-31 23:59:59' AND path_name LIKE '%全南县城区供电所%'"
   },
   {
     "Query": "2024年配变异常事件的发生次数是多少",
@@ -7248,11 +6083,6 @@
     "Query": "2024年临川区发生的支线停运事件中，影响重要用户数少于80且影响民生用户数超过90，并且已经恢复供电的次数是多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND path_name LIKE '%临川区%' AND EFFECT_IMP_CONS_NUM < 80 AND EFFECT_LIVELIHOOD_CONS_COUNT > 90 AND is_power_name = '是'"
-  },
-  {
-    "Query": "8月线路停运事件中，当前管辖光伏台区数超过80的计划停运影响的重要用户数量",
-    "Table": "ads_line_outage_org_static",
-    "SQL": "SELECT PLAN_OUTAGE_IMP_CONS_NUM FROM ads_line_outage_org_static WHERE YEAR = 2024 AND MONTH = 8 AND DATE_TYPE = 2 AND GPC_TRANSFORMER_NUM > 80"
   },
   {
     "Query": "2024年8月1日发生了多少次线路异常事件",
@@ -7268,11 +6098,6 @@
     "Query": "2024年10月30日双桥供电所线路停运事件中，影响专变数少于60且影响敏感用户数少于80的事件次数是多少",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-10-30 00:00:00' AND EVENT_TIME <= '2024-10-30 23:59:59' AND path_name LIKE '%双桥供电所%' AND EFFECT_PRI_TRANS_NUM < 60 AND EFFECT_SEN_CONS_NUM < 80"
-  },
-  {
-    "Query": "11月全南县城区供电所发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-11-01 00:00:00' AND EVENT_TIME <= '2024-11-30 23:59:59' AND path_name LIKE '%全南县城区供电所%'"
   },
   {
     "Query": "2024年1月10日发生的配变停运事件中，当前管辖的电采暖用户数超过100且计划停运的当前管辖光伏用户数的情况详情",
@@ -7325,11 +6150,6 @@
     "SQL": "SELECT FAULT_OUTAGE_PUBLIC_TRANS_NUM, FAULT_OUTAGE_IMP_CONS_NUM FROM ads_line_outage_static WHERE line_name LIKE '%10kV%'"
   },
   {
-    "Query": "7月发生且未恢复供电的支线停运事件中，影响用户数少于90的次数有多少",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-7-01 00:00:00' AND EVENT_TIME <= '2024-7-31 23:59:59' AND is_power_name = '否' AND CONS_NUM < 90"
-  },
-  {
     "Query": "2024年支线停运事件中，当前管辖敏感用户数超过80的次数有多少",
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' AND SEN_CONS_NUM > 80"
@@ -7343,11 +6163,6 @@
     "Query": "光伏台区数排前三的变电站是哪些？",
     "Table": "v_line_outage_event_new",
     "SQL": "select SUBSTATION_NAME FROM v_line_outage_event_new WHERE LINE_NATURE_NAME = '地市公司运维' group by SUBSTATION_NAME order by MAX(GPC_TRANSFORMER_NUM) DESC LIMIT 3"
-  },
-  {
-    "Query": "2月发生的配变异常事件中专变的CT变比数量是多少",
-    "Table": "ads_trans_abnormal_event",
-    "SQL": "SELECT SUM(CTBB) as ctbb_sum FROM ads_trans_abnormal_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' and pub_priv_flag_name = '专变'"
   },
   {
     "Query": "2024年12月丰乐市因线路停电计划停运影响了多少用户",
@@ -7380,11 +6195,6 @@
     "SQL": "SELECT COUNT(*) as cnt FROM ads_tranformer_outage_event WHERE EVENT_TIME >= '2024-2-1 00:00:00' AND EVENT_TIME <= '2024-2-1 23:59:59'"
   },
   {
-    "Query": "10月12日发生了多少次线路异常事件",
-    "Table": "ads_line_abnormal_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_abnormal_event WHERE EVENT_TIME >= '2024-10-12 00:00:00' AND EVENT_TIME <= '2024-10-12 23:59:59'"
-  },
-  {
     "Query": "10kV线路异常事件的线路线损异常次数以及所属区县、供电中心和单位全路径名称",
     "Table": "ads_line_abnormal_static",
     "SQL": "SELECT LINE_LOSS_ABNORMAL_TIMES, district, PATH_NAME FROM ads_line_abnormal_static WHERE line_name LIKE '%10kV%'"
@@ -7405,16 +6215,6 @@
     "SQL": "SELECT SUM(GPC_TRANSFORMER_NUM) as gpc_transformer_num_sum, SUM(IRRI_CONS_COUNT) as irri_cons_count_sum FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59' and EFFECT_PUB_TRANS_NUM < 90 AND GPC_TRANSFORMER_NUM > 50 AND COALTOELEC_CONS_COUNT > 80"
   },
   {
-    "Query": "4月支线停运事件发生了多少次",
-    "Table": "ads_branch_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-4-01 00:00:00' AND EVENT_TIME <= '2024-4-30 23:59:59'"
-  },
-  {
-    "Query": "2月双桥供电所发生的影响重要用户和敏感用户数均少于90，且故障报修工单总数少于60的线路停运事件次数",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-2-01 00:00:00' AND EVENT_TIME <= '2024-2-28 23:59:59' AND path_name LIKE '%双桥供电所%' AND EFFECT_IMP_CONS_NUM < 90 AND EFFECT_SEN_CONS_NUM < 90 AND FAULT_ORDER_NUM < 60"
-  },
-  {
     "Query": "2024年的线路停运事件发生了多少次",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-01-01 00:00:00' AND EVENT_TIME <= '2024-12-31 23:59:59'"
@@ -7433,11 +6233,6 @@
     "Query": "抚州发生的线路停运事件当前管辖的支线数量和最少的公共变压器数量",
     "Table": "ads_line_outage_event",
     "SQL": "SELECT SUM(BRANCH_LINE_NUM) as branch_line_num_sum, MIN(PUBLIC_TRANSFORMER_NUM) as public_transformer_num_min FROM ads_line_outage_event WHERE path_name LIKE '%抚州%'"
-  },
-  {
-    "Query": "8月双桥供电所发生了多少次线路停运事件",
-    "Table": "ads_line_outage_event",
-    "SQL": "SELECT COUNT(*) as cnt FROM ads_line_outage_event WHERE EVENT_TIME >= '2024-8-01 00:00:00' AND EVENT_TIME <= '2024-8-31 23:59:59' AND path_name LIKE '%双桥供电所%'"
   },
   {
     "Query": "2024年南昌发生线路停运事件导致投诉工单总数超过50的次数有多少",
@@ -7469,5 +6264,4 @@
     "Table": "ads_branch_line_outage_event",
     "SQL": "SELECT SUM(OUTAGE_INFO_NUM) as outage_info_num_sum, SUM(OUTAGE_INFO_NUM) as outage_info_num_sum FROM ads_branch_line_outage_event WHERE EVENT_TIME >= '2024-6-2 00:00:00' AND EVENT_TIME <= '2024-6-2 23:59:59' and path_name LIKE '%南昌%'"
   }
-
 ]
